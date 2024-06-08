@@ -20,8 +20,8 @@
 
 5. Change directory to exported folder
 
-6. Search for specific log content using:  
-   i. `grep -rlE "LifeValue|CombatInfo" --include \*.js .`  
+6. Search for specific log content using:
+   i. `grep -rlE "LifeValue|CombatInfo" --include \*.js .`
    ii. `grep -rlE "LifeValue|CombatInfo" --include \*.js . | xargs code`
 
     ```bash
@@ -77,6 +77,30 @@
 8. Find and modify files to include extra logging
 
 9. Packaging using UE4.26
+
+## Components
+
+Menus
+
+1.
+2.
+
+Buttons
+
+1.
+2.
+
+Database
+
+1. `Content/Aki/Javascript/Game/Define/ConfigQuery/BattlePassById.js`
+2. `Content/Aki/Javascript/Game/Define/ConfigQuery/ConfigStatement.js`
+
+```js
+DamageById_1 = require("./DamageById"),
+DamagePayloadById_1 = require("./DamagePayloadById"),
+DamageTextAll_1 = require("./DamageTextAll"),
+```
+
 
 ## Todos
 
