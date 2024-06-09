@@ -82,24 +82,149 @@
 
 Menus
 
-1.
-2.
+1. `Content/Aki/JavaScript/Game/Module/Phantom/PhantomBattle/View/PhantomBattleFettersViewItem.js`
+2. `Content\Aki\JavaScript\Game\Module\LordGym\View\LordGymChallengeRecordView.js`
+3. `Content\Aki\Javascript\Game\Manager\UiViewManager.js`
+4. ```js
+    var newBox = new ConfirmBoxDefine_1.ConfirmBoxDataNew(50);
+
+    newBox.SetTextArgs(state);
+    newBox.SetTitle("KunMods State[Home] DisableAntiCheat : ON ");
+    ConfirmBoxController_1.ConfirmBoxController.ShowConfirmBoxNew(newBox);
+   ```
+5. `Content\Aki\JavaScript\Game\Module\Photograph\View\PhotographSetupView.js`
 
 Buttons
 
-1.
+1. `"BtnItem.js"`
+2. `"Button.js"`
+3. ```js
+  class DropDownItem extends DropDownItemBase_1.DropDownItemBase {
+    OnRegisterComponent() {
+        this.ComponentRegisterInfos = [
+            [0, UE.UIExtendToggle],
+            [1, UE.UIText]
+        ]
+    }
+    OnShowDropDownItemBase(e) {
+        LguiUtil_1.LguiUtil.SetLocalTextNew(this.GetText(1), e.Name)
+    }
+    GetDropDownToggle() {
+        return this.GetExtendToggle(0)
+    }
+  }
+  const TEXT_INDEX = 0;
+  class DropDownTitle extends TitleItemBase_1.TitleItemBase {
+      OnRegisterComponent() {
+          this.ComponentRegisterInfos = [
+              [TEXT_INDEX, UE.UIText]
+          ]
+      }
+      ShowTemp(e, i) {
+          LguiUtil_1.LguiUtil.SetLocalTextNew(this.GetText(TEXT_INDEX), e.Name)
+      }
+  }
+  exports.DropDownTitle = DropDownTitle;
+  ```
+4. Exit Button text
+    i. `var e = MultiTextLang_1.configMultiTextLang.GetLocalTextNew("ConfirmBox_41_ButtonText_0"),`
+5. ```js
+   class Button extends UiPanelBase_1.UiPanelBase {
+        constructor() {
+            super(...arguments), this.OOe = void 0, this.kOe = () => {
+                this.OOe ? .()
+            }
+        }
+        OnRegisterComponent() {
+            this.ComponentRegisterInfos = [
+                [0, UE.UIText],
+                [1, UE.UIItem],
+                [2, UE.UIText],
+                [3, UE.UIButtonComponent]
+            ], this.BtnBindInfo = [
+                [3, this.kOe]
+            ]
+        }
+        OnBeforeShow() {
+            this.GetText(0).SetText(""), this.GetText(2).SetText("")
+        }
+        async InitializeAsync(e, t) {
+            this.OOe = t, await this.CreateByActorAsync(e)
+        }
+        SetFloatText(e) {
+            this.GetText(2).SetUIActive(!0), this.GetText(2).SetText(e)
+        }
+        SetBtnText(e) {
+            this.GetText(0).SetText(e)
+        }
+    }
+    ```
+6. `LongPressButton_1 = require("../Util/LongPressButton"),`
+
+Toggles
+
+1. ```js
+    iFr() {
+      var t = this.GetExtendToggle(6);
+      t.SetToggleState(ModelManager_1.ModelManager.WorldMapModel.HideCustomMarks ? 1 : 0), t.OnStateChange.Clear(), t.OnStateChange.Add(this.w2r), ModelManager_1.ModelManager.OnlineModel.GetIsTeamModel() && t.SetSelfInteractive(ModelManager_1.ModelManager.OnlineModel.GetIsMyTeam())
+    }
+   ```
+
+Layouts
+
+1. ```js
+    t = (this.Xsr = new TeamPlayerSelectionComponent_1.TeamPlayerSelectionComponent(i), this.Ksr = new GenericLayout_1.GenericLayout(this.GetHorizontalLayout(13), this.tar), this.DFt = new GenericLayout_1.GenericLayout(this.GetHorizontalLayout(16), () => new ExitSkillTag_1.ExitSkillTag), this.jsr = this.Pe ? .RoleList, this.Pe ? .CurrentRoleId),
+   ```
 2.
+
+Views
+
+1. `Content\Aki\JavaScript\Game\Module\RoleSelect\TeamRoleSelectView.js`
+
+Dropdown
+
+1. `Content\Aki\JavaScript\Game\Module\LordGym\View\LordGymChallengeRecordView.js`
 
 Database
 
 1. `Content/Aki/Javascript/Game/Define/ConfigQuery/BattlePassById.js`
 2. `Content/Aki/Javascript/Game/Define/ConfigQuery/ConfigStatement.js`
+3. `Content/Aki/JavaScript/Core/Define/ConfigQuery/OverlayAbpMontageDataById.js`
+4. `Content/Aki/JavaScript/Core/Define/ConfigQuery/AbpMontageDataById.js`
 
 ```js
 DamageById_1 = require("./DamageById"),
 DamagePayloadById_1 = require("./DamagePayloadById"),
 DamageTextAll_1 = require("./DamageTextAll"),
 ```
+
+```js
+UE.KuroStaticLibrary.SaveStringToFile("X秒,当前时间,对象,对象ID,对象名称,技能ID,技能类型,攻击,暴击,爆伤,生命,防御,伤害加成\n" + this.aAo.join("\n"), UE.BlueprintPathsLibrary.ProjectSavedDir() + this.Pt + "SkillRecord.csv", !0);
+
+SkillRecord.csv
+BulletRecord.csv
+MoveSum.csv
+DamageRecord.csv
+DamageRecord_Attr.csv
+DamageRecord_Snipeshot.csv
+BuffRecord.csv
+RoleDamageSum.csv
+MonsterDamageSum.csv
+
+UE.FileSystemOperation.ReadFile
+UE.KuroStaticLibrary.LoadFileToString
+
+UiManager_1.UiManager.OpenView("InfoDisplayImgView")
+
+class TowerAreaItem extends GridProxyAbstract_1.GridProxyAbstract
+class TowerNormalView extends UiViewBase_1.UiViewBase {
+```
+
+### Architecture
+
+1. Views - `Content\Aki\JavaScript\Game\Module\TowerDetailUi\View\TowerNormalView.js`
+2. Items - `Content\Aki\JavaScript\Game\Module\TowerDetailUi\View\TowerAreaItem.js`
+3. ControllerHolder > ConfirmBoxController > ShowConfirmBoxNew
 
 
 ## Todos
