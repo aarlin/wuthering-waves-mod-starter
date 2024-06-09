@@ -42,6 +42,7 @@ var ESkillGenreName, EMovementModeName, EAttributeId = Protocol_1.Aki.Protocol.E
 const StringBuilder_1 = require("../../../../../../Core/Utils/StringBuilder"),
     RegisterComponent_1 = require("../../../../../../Core/Entity/RegisterComponent"),
     ControllerHolder_1 = require("../../../../../Manager/ControllerHolder"),
+    CombatDebugController_1 = require("../../../../../Utils/CombatDebugController"),
     MAX_DEBUG_STRING_NUMS = 50;
 ! function (t) {
     t[t["普攻"] = 0] = "普攻", t[t["蓄力"] = 1] = "蓄力", t[t["E技能"] = 2] = "E技能", t[t["大招"] = 3] = "大招", t[t.QTE = 4] = "QTE", t[t["极限闪避反击"] = 5] = "极限闪避反击", t[t["地面闪避"] = 6] = "地面闪避", t[t["极限闪避"] = 7] = "极限闪避", t[t["被动技能"] = 8] = "被动技能", t[t["战斗幻想技"] = 9] = "战斗幻想技", t[t["探索幻象技"] = 10] = "探索幻象技", t[t["空中闪避"] = 11] = "空中闪避"
@@ -289,7 +290,7 @@ let CharacterGasDebugComponent = CharacterGasDebugComponent_1 = class CharacterG
     static SAo() {
         var t = new Array,
             e = "";
-        let r = "";
+        let csvData = "";
         UE.KuroStaticLibrary.SaveStringToFile("X秒,当前时间,对象,对象ID,对象名称,技能ID,技能类型,攻击,暴击,爆伤,生命,防御,伤害加成\n" + this.aAo.join("\n"), UE.BlueprintPathsLibrary.ProjectSavedDir() + this.Pt + "SkillRecord.csv", !0);
         var i = new Array,
             a = "X秒,当前时间,对象,对象ID,对象名称,子弹ID,子弹名称,伤害ID,技能ID,技能类型,子弹是否命中\n";
@@ -297,19 +298,20 @@ let CharacterGasDebugComponent = CharacterGasDebugComponent_1 = class CharacterG
             var n = this.nAo.get(q);
             n.push(ModelManager_1.ModelManager.BulletModel.IsBulletHit(q) ? "1" : "0"), i.push(n.join(","))
         }
-        UE.KuroStaticLibrary.SaveStringToFile(a + i.join("\n"), UE.BlueprintPathsLibrary.ProjectSavedDir() + this.Pt + "BulletRecord.csv", !0), this.nAo.clear(), this.sAo.length = 0, a = "X秒,当前时间,对象,对象ID,对象名称,伤害来源,结算ID,子弹名称,伤害值,技能ID,技能名称,唯一ID,Config ID,攻击,暴击,爆伤,生命,防御,伤害加成\n", UE.KuroStaticLibrary.SaveStringToFile(a + this.yAo.join("\n"), UE.BlueprintPathsLibrary.ProjectSavedDir() + this.Pt + "DamageRecord.csv", !0), a = "X秒,当前时间,对象,对象ID,对象名称,伤害来源,结算ID,子弹名称,伤害值,技能ID,技能名称,是否暴击,唯一ID,当前生命值,生命值上限,攻击,暴击,暴击伤害,防御,共鸣效率,共鸣能量上限,共鸣能量,普攻速度,重击速度,共鸣技能伤害加成,通用伤害加成,声骸技能伤害加成,普攻伤害加成,蓄力攻击伤害加成,共鸣解放伤害加成,连携技能伤害加成,物理伤害加成,冷凝伤害加成,热熔伤害加成,导电伤害加成,气动伤害加成,衍射伤害加成,解离伤害加成,物理伤害抗性,冷凝伤害抗性,热熔伤害抗性,导电伤害抗性,气动伤害抗性,衍射伤害抗性,解离伤害抗性,治疗效果加成,受治疗效果加成,通用受伤减免,物理伤害减免,冷凝伤害减免,热熔伤害减免,导电伤害减免,气动伤害减免,衍射伤害减免,解离伤害减免,韧性上限,韧性,韧性恢复速度,削韧倍率,被削韧倍率,狂暴上限,狂暴,狂暴恢复,空狂暴惩罚时间,破狂暴倍率,被破狂暴倍率,共振度上限,共振度上限,共振度恢复速度,空共振度惩罚时间,破共振度倍率,被破共振度倍率,当前生命值,生命值上限,攻击,暴击,暴击伤害,防御,共鸣效率,共鸣能量上限,共鸣能量,普攻速度,重击速度,共鸣技能伤害加成,通用伤害加成,声骸技能伤害加成,普攻伤害加成,蓄力攻击伤害加成,共鸣解放伤害加成,连携技能伤害加成,物理伤害加成,冷凝伤害加成,热熔伤害加成,导电伤害加成,气动伤害加成,衍射伤害加成,解离伤害加成,物理伤害抗性,冷凝伤害抗性,热熔伤害抗性,导电伤害抗性,气动伤害抗性,衍射伤害抗性,解离伤害抗性,治疗效果加成,受治疗效果加成,通用受伤减免,物理伤害减免,冷凝伤害减免,热熔伤害减免,导电伤害减免,气动伤害减免,衍射伤害减免,解离伤害减免,韧性上限,韧性,韧性恢复速度,削韧倍率,被削韧倍率,狂暴上限,狂暴,狂暴恢复,空狂暴惩罚时间,破狂暴倍率,被破狂暴倍率,共振度上限,共振度上限,共振度恢复速度,空共振度惩罚时间,破共振度倍率,被破共振度倍率,削刃,大招能量,元素能量类型,元素能量,当前生命值,生命值上限,攻击,暴击,暴击伤害,防御,共鸣效率,共鸣能量上限,共鸣能量,普攻速度,重击速度,共鸣技能伤害加成,通用伤害加成,声骸技能伤害加成,普攻伤害加成,蓄力攻击伤害加成,共鸣解放伤害加成,连携技能伤害加成,物理伤害加成,冷凝伤害加成,热熔伤害加成,导电伤害加成,气动伤害加成,衍射伤害加成,解离伤害加成,物理伤害抗性,冷凝伤害抗性,热熔伤害抗性,导电伤害抗性,气动伤害抗性,衍射伤害抗性,解离伤害抗性,治疗效果加成,受治疗效果加成,通用受伤减免,物理伤害减免,冷凝伤害减免,热熔伤害减免,导电伤害减免,气动伤害减免,衍射伤害减免,解离伤害减免,韧性上限,韧性,韧性恢复速度,削韧倍率,被削韧倍率,狂暴上限,狂暴,狂暴恢复,空狂暴惩罚时间,破狂暴倍率,被破狂暴倍率,共振度上限,共振度上限,共振度恢复速度,空共振度惩罚时间,破共振度倍率,被破共振度倍率,当前生命值,生命值上限,攻击,暴击,暴击伤害,防御,共鸣效率,共鸣能量上限,共鸣能量,普攻速度,重击速度,共鸣技能伤害加成,通用伤害加成,声骸技能伤害加成,普攻伤害加成,蓄力攻击伤害加成,共鸣解放伤害加成,连携技能伤害加成,物理伤害加成,冷凝伤害加成,热熔伤害加成,导电伤害加成,气动伤害加成,衍射伤害加成,解离伤害加成,物理伤害抗性,冷凝伤害抗性,热熔伤害抗性,导电伤害抗性,气动伤害抗性,衍射伤害抗性,解离伤害抗性,治疗效果加成,受治疗效果加成,通用受伤减免,物理伤害减免,冷凝伤害减免,热熔伤害减免,导电伤害减免,气动伤害减免,衍射伤害减免,解离伤害减免,韧性上限,韧性,韧性恢复速度,削韧倍率,被削韧倍率,狂暴上限,狂暴,狂暴恢复,空狂暴惩罚时间,破狂暴倍率,被破狂暴倍率,共振度上限,共振度上限,共振度恢复速度,空共振度惩罚时间,破共振度倍率,被破共振度倍率,白条倍率,白条倍率百分比0,白条倍率百分比1,削刃,大招能量,元素能量类型,元素能量,存在的BuffID,存在的Buff名称,存在的BuffID,存在的Buff名称\n", UE.KuroStaticLibrary.SaveStringToFile(a + this.IAo.join("\n"), UE.BlueprintPathsLibrary.ProjectSavedDir() + this.Pt + "DamageRecord_Attr.csv", !0), this.IAo.length = 0, a = "X秒,当前时间,对象,对象ID,对象名称,伤害来源,结算ID,子弹名称,伤害值,技能ID,技能名称,唯一ID,是否暴击,当前生命值,生命值上限,攻击,暴击,暴击伤害,防御,共鸣效率,共鸣能量上限,共鸣能量,普攻速度,重击速度,共鸣技能伤害加成,通用伤害加成,声骸技能伤害加成,普攻伤害加成,蓄力攻击伤害加成,共鸣解放伤害加成,连携技能伤害加成,物理伤害加成,冷凝伤害加成,热熔伤害加成,导电伤害加成,气动伤害加成,衍射伤害加成,解离伤害加成,物理伤害抗性,冷凝伤害抗性,热熔伤害抗性,导电伤害抗性,气动伤害抗性,衍射伤害抗性,解离伤害抗性,治疗效果加成,受治疗效果加成,通用受伤减免,物理伤害减免,冷凝伤害减免,热熔伤害减免,导电伤害减免,气动伤害减免,衍射伤害减免,解离伤害减免,韧性上限,韧性,韧性恢复速度,削韧倍率,被削韧倍率,狂暴上限,狂暴,狂暴恢复,空狂暴惩罚时间,破狂暴倍率,被破狂暴倍率,共振度上限,共振度上限,共振度恢复速度,空共振度惩罚时间,破共振度倍率,被破共振度倍率,当前生命值,生命值上限,攻击,暴击,暴击伤害,防御,共鸣效率,共鸣能量上限,共鸣能量,普攻速度,重击速度,共鸣技能伤害加成,通用伤害加成,声骸技能伤害加成,普攻伤害加成,蓄力攻击伤害加成,共鸣解放伤害加成,连携技能伤害加成,物理伤害加成,冷凝伤害加成,热熔伤害加成,导电伤害加成,气动伤害加成,衍射伤害加成,解离伤害加成,物理伤害抗性,冷凝伤害抗性,热熔伤害抗性,导电伤害抗性,气动伤害抗性,衍射伤害抗性,解离伤害抗性,治疗效果加成,受治疗效果加成,通用受伤减免,物理伤害减免,冷凝伤害减免,热熔伤害减免,导电伤害减免,气动伤害减免,衍射伤害减免,解离伤害减免,韧性上限,韧性,韧性恢复速度,削韧倍率,被削韧倍率,狂暴上限,狂暴,狂暴恢复,空狂暴惩罚时间,破狂暴倍率,被破狂暴倍率,共振度上限,共振度上限,共振度恢复速度,空共振度惩罚时间,破共振度倍率,被破共振度倍率,削刃,大招能量,元素能量类型,元素能量,存在的BuffID,存在的Buff名称,存在的BuffID,存在的Buff名称\n", UE.KuroStaticLibrary.SaveStringToFile(a + this.TAo.join("\n"), UE.BlueprintPathsLibrary.ProjectSavedDir() + this.Pt + "DamageRecord_Snipeshot.csv", !0), this.TAo.length = 0, r = "X秒,当前时间,对象,对象ID,对象名称,BuffId,Buff名称,添加or删除\n" + this.LAo.join("\n"), UE.KuroStaticLibrary.SaveStringToFile(r, UE.BlueprintPathsLibrary.ProjectSavedDir() + this.Pt + "BuffRecord.csv", !0);
+        UE.KuroStaticLibrary.SaveStringToFile(a + i.join("\n"), UE.BlueprintPathsLibrary.ProjectSavedDir() + this.Pt + "BulletRecord.csv", !0), this.nAo.clear(), this.sAo.length = 0, a = "X秒,当前时间,对象,对象ID,对象名称,伤害来源,结算ID,子弹名称,伤害值,技能ID,技能名称,唯一ID,Config ID,攻击,暴击,爆伤,生命,防御,伤害加成\n", UE.KuroStaticLibrary.SaveStringToFile(a + this.yAo.join("\n"), UE.BlueprintPathsLibrary.ProjectSavedDir() + this.Pt + "DamageRecord.csv", !0), a = "X秒,当前时间,对象,对象ID,对象名称,伤害来源,结算ID,子弹名称,伤害值,技能ID,技能名称,是否暴击,唯一ID,当前生命值,生命值上限,攻击,暴击,暴击伤害,防御,共鸣效率,共鸣能量上限,共鸣能量,普攻速度,重击速度,共鸣技能伤害加成,通用伤害加成,声骸技能伤害加成,普攻伤害加成,蓄力攻击伤害加成,共鸣解放伤害加成,连携技能伤害加成,物理伤害加成,冷凝伤害加成,热熔伤害加成,导电伤害加成,气动伤害加成,衍射伤害加成,解离伤害加成,物理伤害抗性,冷凝伤害抗性,热熔伤害抗性,导电伤害抗性,气动伤害抗性,衍射伤害抗性,解离伤害抗性,治疗效果加成,受治疗效果加成,通用受伤减免,物理伤害减免,冷凝伤害减免,热熔伤害减免,导电伤害减免,气动伤害减免,衍射伤害减免,解离伤害减免,韧性上限,韧性,韧性恢复速度,削韧倍率,被削韧倍率,狂暴上限,狂暴,狂暴恢复,空狂暴惩罚时间,破狂暴倍率,被破狂暴倍率,共振度上限,共振度上限,共振度恢复速度,空共振度惩罚时间,破共振度倍率,被破共振度倍率,当前生命值,生命值上限,攻击,暴击,暴击伤害,防御,共鸣效率,共鸣能量上限,共鸣能量,普攻速度,重击速度,共鸣技能伤害加成,通用伤害加成,声骸技能伤害加成,普攻伤害加成,蓄力攻击伤害加成,共鸣解放伤害加成,连携技能伤害加成,物理伤害加成,冷凝伤害加成,热熔伤害加成,导电伤害加成,气动伤害加成,衍射伤害加成,解离伤害加成,物理伤害抗性,冷凝伤害抗性,热熔伤害抗性,导电伤害抗性,气动伤害抗性,衍射伤害抗性,解离伤害抗性,治疗效果加成,受治疗效果加成,通用受伤减免,物理伤害减免,冷凝伤害减免,热熔伤害减免,导电伤害减免,气动伤害减免,衍射伤害减免,解离伤害减免,韧性上限,韧性,韧性恢复速度,削韧倍率,被削韧倍率,狂暴上限,狂暴,狂暴恢复,空狂暴惩罚时间,破狂暴倍率,被破狂暴倍率,共振度上限,共振度上限,共振度恢复速度,空共振度惩罚时间,破共振度倍率,被破共振度倍率,削刃,大招能量,元素能量类型,元素能量,当前生命值,生命值上限,攻击,暴击,暴击伤害,防御,共鸣效率,共鸣能量上限,共鸣能量,普攻速度,重击速度,共鸣技能伤害加成,通用伤害加成,声骸技能伤害加成,普攻伤害加成,蓄力攻击伤害加成,共鸣解放伤害加成,连携技能伤害加成,物理伤害加成,冷凝伤害加成,热熔伤害加成,导电伤害加成,气动伤害加成,衍射伤害加成,解离伤害加成,物理伤害抗性,冷凝伤害抗性,热熔伤害抗性,导电伤害抗性,气动伤害抗性,衍射伤害抗性,解离伤害抗性,治疗效果加成,受治疗效果加成,通用受伤减免,物理伤害减免,冷凝伤害减免,热熔伤害减免,导电伤害减免,气动伤害减免,衍射伤害减免,解离伤害减免,韧性上限,韧性,韧性恢复速度,削韧倍率,被削韧倍率,狂暴上限,狂暴,狂暴恢复,空狂暴惩罚时间,破狂暴倍率,被破狂暴倍率,共振度上限,共振度上限,共振度恢复速度,空共振度惩罚时间,破共振度倍率,被破共振度倍率,当前生命值,生命值上限,攻击,暴击,暴击伤害,防御,共鸣效率,共鸣能量上限,共鸣能量,普攻速度,重击速度,共鸣技能伤害加成,通用伤害加成,声骸技能伤害加成,普攻伤害加成,蓄力攻击伤害加成,共鸣解放伤害加成,连携技能伤害加成,物理伤害加成,冷凝伤害加成,热熔伤害加成,导电伤害加成,气动伤害加成,衍射伤害加成,解离伤害加成,物理伤害抗性,冷凝伤害抗性,热熔伤害抗性,导电伤害抗性,气动伤害抗性,衍射伤害抗性,解离伤害抗性,治疗效果加成,受治疗效果加成,通用受伤减免,物理伤害减免,冷凝伤害减免,热熔伤害减免,导电伤害减免,气动伤害减免,衍射伤害减免,解离伤害减免,韧性上限,韧性,韧性恢复速度,削韧倍率,被削韧倍率,狂暴上限,狂暴,狂暴恢复,空狂暴惩罚时间,破狂暴倍率,被破狂暴倍率,共振度上限,共振度上限,共振度恢复速度,空共振度惩罚时间,破共振度倍率,被破共振度倍率,白条倍率,白条倍率百分比0,白条倍率百分比1,削刃,大招能量,元素能量类型,元素能量,存在的BuffID,存在的Buff名称,存在的BuffID,存在的Buff名称\n", UE.KuroStaticLibrary.SaveStringToFile(a + this.IAo.join("\n"), UE.BlueprintPathsLibrary.ProjectSavedDir() + this.Pt + "DamageRecord_Attr.csv", !0), this.IAo.length = 0, a = "X秒,当前时间,对象,对象ID,对象名称,伤害来源,结算ID,子弹名称,伤害值,技能ID,技能名称,唯一ID,是否暴击,当前生命值,生命值上限,攻击,暴击,暴击伤害,防御,共鸣效率,共鸣能量上限,共鸣能量,普攻速度,重击速度,共鸣技能伤害加成,通用伤害加成,声骸技能伤害加成,普攻伤害加成,蓄力攻击伤害加成,共鸣解放伤害加成,连携技能伤害加成,物理伤害加成,冷凝伤害加成,热熔伤害加成,导电伤害加成,气动伤害加成,衍射伤害加成,解离伤害加成,物理伤害抗性,冷凝伤害抗性,热熔伤害抗性,导电伤害抗性,气动伤害抗性,衍射伤害抗性,解离伤害抗性,治疗效果加成,受治疗效果加成,通用受伤减免,物理伤害减免,冷凝伤害减免,热熔伤害减免,导电伤害减免,气动伤害减免,衍射伤害减免,解离伤害减免,韧性上限,韧性,韧性恢复速度,削韧倍率,被削韧倍率,狂暴上限,狂暴,狂暴恢复,空狂暴惩罚时间,破狂暴倍率,被破狂暴倍率,共振度上限,共振度上限,共振度恢复速度,空共振度惩罚时间,破共振度倍率,被破共振度倍率,当前生命值,生命值上限,攻击,暴击,暴击伤害,防御,共鸣效率,共鸣能量上限,共鸣能量,普攻速度,重击速度,共鸣技能伤害加成,通用伤害加成,声骸技能伤害加成,普攻伤害加成,蓄力攻击伤害加成,共鸣解放伤害加成,连携技能伤害加成,物理伤害加成,冷凝伤害加成,热熔伤害加成,导电伤害加成,气动伤害加成,衍射伤害加成,解离伤害加成,物理伤害抗性,冷凝伤害抗性,热熔伤害抗性,导电伤害抗性,气动伤害抗性,衍射伤害抗性,解离伤害抗性,治疗效果加成,受治疗效果加成,通用受伤减免,物理伤害减免,冷凝伤害减免,热熔伤害减免,导电伤害减免,气动伤害减免,衍射伤害减免,解离伤害减免,韧性上限,韧性,韧性恢复速度,削韧倍率,被削韧倍率,狂暴上限,狂暴,狂暴恢复,空狂暴惩罚时间,破狂暴倍率,被破狂暴倍率,共振度上限,共振度上限,共振度恢复速度,空共振度惩罚时间,破共振度倍率,被破共振度倍率,削刃,大招能量,元素能量类型,元素能量,存在的BuffID,存在的Buff名称,存在的BuffID,存在的Buff名称\n", UE.KuroStaticLibrary.SaveStringToFile(a + this.TAo.join("\n"), UE.BlueprintPathsLibrary.ProjectSavedDir() + this.Pt + "DamageRecord_Snipeshot.csv", !0), this.TAo.length = 0, csvData = "X秒,当前时间,对象,对象ID,对象名称,BuffId,Buff名称,添加or删除\n" + this.LAo.join("\n"), UE.KuroStaticLibrary.SaveStringToFile(csvData, UE.BlueprintPathsLibrary.ProjectSavedDir() + this.Pt + "BuffRecord.csv", !0);
         for (const H of this.DAo.values()) t.push(H.ToCsv().join(","));
-        r = "对象ID,对象名称,唯一Id,普攻,蓄力,E技能,大招,QTE,极限闪避反击,地面闪避,极限闪避,被动技能,战斗幻想技,探索幻象技,空中闪避\n" + t.join("\n"), UE.KuroStaticLibrary.SaveStringToFile(r, UE.BlueprintPathsLibrary.ProjectSavedDir() + this.Pt + "MoveSum.csv", !0), t.length = 0, e += r + "\n", a = "角色ID,角色名称,受伤来源ConfigId,受伤来源名称,受伤来源唯一ID,总伤害,普攻,蓄力,E技能,大招,QTE,极限闪避反击,地面闪避,极限闪避,被动技能,战斗幻想技,探索幻象技,空中闪避\n";
+        csvData = "对象ID,对象名称,唯一Id,普攻,蓄力,E技能,大招,QTE,极限闪避反击,地面闪避,极限闪避,被动技能,战斗幻想技,探索幻象技,空中闪避\n" + t.join("\n"), UE.KuroStaticLibrary.SaveStringToFile(csvData, UE.BlueprintPathsLibrary.ProjectSavedDir() + this.Pt + "MoveSum.csv", !0), t.length = 0, e += csvData + "\n", a = "角色ID,角色名称,受伤来源ConfigId,受伤来源名称,受伤来源唯一ID,总伤害,普攻,蓄力,E技能,大招,QTE,极限闪避反击,地面闪避,极限闪避,被动技能,战斗幻想技,探索幻象技,空中闪避\n";
         for (const V of this.RAo.values()) t.push(V.ToCsvForRole().join(","));
-        r = a + t.join("\n"), UE.KuroStaticLibrary.SaveStringToFile(r, UE.BlueprintPathsLibrary.ProjectSavedDir() + this.Pt + "RoleDamageSum.csv", !0), t.length = 0, e += r + "\n", a = "怪物ConfigID,怪物名称,怪物唯一Id,攻击者ConfigId,攻击者名称,总伤害,普攻,蓄力,E技能,大招,QTE,极限闪避反击,地面闪避,极限闪避,被动技能,战斗幻想技,探索幻象技,空中闪避\n";
+        csvData = a + t.join("\n"), UE.KuroStaticLibrary.SaveStringToFile(csvData, UE.BlueprintPathsLibrary.ProjectSavedDir() + this.Pt + "RoleDamageSum.csv", !0), t.length = 0, e += csvData + "\n", a = "怪物ConfigID,怪物名称,怪物唯一Id,攻击者ConfigId,攻击者名称,总伤害,普攻,蓄力,E技能,大招,QTE,极限闪避反击,地面闪避,极限闪避,被动技能,战斗幻想技,探索幻象技,空中闪避\n";
         for (const x of this.UAo.values()) t.push(x.ToCsvForMonster().join(","));
-        r = a + t.join("\n"), UE.KuroStaticLibrary.SaveStringToFile(r, UE.BlueprintPathsLibrary.ProjectSavedDir() + this.Pt + "MonsterDamageSum.csv", !0), t.length = 0, e += r + "\n", r = "";
+        csvData = a + t.join("\n"), UE.KuroStaticLibrary.SaveStringToFile(csvData, UE.BlueprintPathsLibrary.ProjectSavedDir() + this.Pt + "MonsterDamageSum.csv", !0), t.length = 0, e += csvData + "\n", csvData = "";
         var o = UE.KismetSystemLibrary.GetGameTimeInSeconds(GlobalData_1.GlobalData.GameInstance) - CharacterGasDebugComponent_1.MAo;
         let s = 0;
-        for (; o >= s;) r += ",'" + s.toString() + "s'", s += .5;
+        for (; o >= s;) csvData += ",'" + s.toString() + "s'", s += .5;
+        CombatDebugController_1.CombatDebugController.CombatInfo("[GasDebugComponent] CsvData: ", csvData);
         let h = "";
         var a = (0, puerts_1.$ref)(h),
-            u = (UE.FileSystemOperation.ReadFile(UE.KismetSystemLibrary.GetProjectDirectory() + "../Config/ResConfig/RoleDspTpl.txt", a), h = (h = (0, puerts_1.$unref)(a)).replace("TPL_XAXIS_VALUES", r), new StringBuilder_1.StringBuilder),
+            u = (UE.FileSystemOperation.ReadFile(UE.KismetSystemLibrary.GetProjectDirectory() + "../Config/ResConfig/RoleDspTpl.txt", a), h = (h = (0, puerts_1.$unref)(a)).replace("TPL_XAXIS_VALUES", csvData), new StringBuilder_1.StringBuilder),
             _ = new Map,
             l = new Map,
             C = new Map,
@@ -345,26 +347,32 @@ let CharacterGasDebugComponent = CharacterGasDebugComponent_1 = class CharacterG
                 N = ConfigManager_1.ConfigManager.RoleConfig.GetRoleConfig(N),
                 N = ConfigManager_1.ConfigManager.RoleConfig.GetRoleName(N.Name);
             T.push(N), u.Append(StringUtils_1.StringUtils.Format("{name: '{0}伤害', type: 'line', data: [{1}],},", N, I.join(",")))
+            CombatDebugController_1.CombatDebugController.CombatInfo("[GasDebugComponent] 伤害: ", StringUtils_1.StringUtils.Format("{name: '{0}伤害', type: 'line', data: [{1}],},", N, I.join(",")));
         }
         for ([y, M] of m) {
             var L = B.indexOf(y);
             u.Append(StringUtils_1.StringUtils.Format("{name: '{0}绝对DPS', type: 'line', data: [{1}],},", T[L], M.join(",")))
+            CombatDebugController_1.CombatDebugController.CombatInfo("[GasDebugComponent] 绝对DPS", StringUtils_1.StringUtils.Format("{name: '{0}伤害', type: 'line', data: [{1}],},", N, I.join(",")));
         }
         for ([S, G] of d) {
             var k = B.indexOf(S);
             u.Append(StringUtils_1.StringUtils.Format("{name: '{0}站场DPS', type: 'line', data: [{1}],},", T[k], G.join(",")))
+            CombatDebugController_1.CombatDebugController.CombatInfo("[GasDebugComponent] 站场DPS", StringUtils_1.StringUtils.Format("{name: '{0}站场DPS', type: 'line', data: [{1}],},", T[k], G.join(",")));
         }
         for ([U, w] of f) {
             var F = B.indexOf(U);
             u.Append(StringUtils_1.StringUtils.Format("{name: '{0}在场上', type: 'line', data: [{1}],},", T[F], w.join(",")))
+            CombatDebugController_1.CombatDebugController.CombatInfo("[GasDebugComponent] 在场上", StringUtils_1.StringUtils.Format("{name: '{0}在场上', type: 'line', data: [{1}],},", T[F], w.join(",")));
         }
         for ([R, P] of g) {
             var Q = B.indexOf(R);
             u.Append(StringUtils_1.StringUtils.Format("{name: '{0}QTE', type: 'line', data: [{1}],},", T[Q], P.join(",")))
+            CombatDebugController_1.CombatDebugController.CombatInfo("[GasDebugComponent] QTE", StringUtils_1.StringUtils.Format("{name: '{0}QTE', type: 'line', data: [{1}],},", T[Q], P.join(",")));
         }
         for ([O, $] of b) {
             var X = B.indexOf(O);
             u.Append(StringUtils_1.StringUtils.Format("{name: '{0}退场技', type: 'line', data: [{1}],},", T[X], $.join(",")))
+            CombatDebugController_1.CombatDebugController.CombatInfo("[GasDebugComponent] 退场技", StringUtils_1.StringUtils.Format("{name: '{0}退场技', type: 'line', data: [{1}],},", T[X], $.join(",")));
         }
         return h = h.replace("CONTENT_SERIES", u.ToString()), UE.KuroStaticLibrary.SaveStringToFile(h, UE.BlueprintPathsLibrary.ProjectSavedDir() + this.Pt + "RoleDsp.html", !0), this.aAo.length = 0, this.yAo.length = 0, this.DAo.clear(), this.RAo.clear(), this.UAo.clear(), e
     }
