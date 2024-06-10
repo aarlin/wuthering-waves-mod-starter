@@ -1,4 +1,4 @@
-# Wuthering Waves DPS Meter
+# Wuthering Waves QoL Mods
 
 ## How to Install
 
@@ -36,7 +36,7 @@ OR
 
 5. Open exported folder with VS Code
 
-6. Format minified `.js` files with <kbd>Shift</kbd> + <kbd>Alt</kbd> + <kbd>F</kbd> inside VS Code
+6. Format minified `.js` files with <kbd>Shift</kbd> + <kbd>Alt</kbd> + <kbd>F</kbd> inside VS Code OR run `npx @biomejs/biome format --write .`
 
 7. Modify files
 
@@ -158,6 +158,12 @@ OR
 3. `Content/Aki/JavaScript/Core/Define/ConfigQuery/OverlayAbpMontageDataById.js`
 4. `Content/Aki/JavaScript/Core/Define/ConfigQuery/AbpMontageDataById.js`
 
+### Hotkeys
+
+1. `Client\Content\Aki\JavaScript\Game\InputSettings\Key\InputCombinationActionKey.js`
+
+### Miscellaneous
+
 ```js
 DamageById_1 = require("./DamageById"),
 DamagePayloadById_1 = require("./DamagePayloadById"),
@@ -187,7 +193,7 @@ class TowerNormalView extends UiViewBase_1.UiViewBase {
 ```
 
 i. `grep -rlE "LifeValue|CombatInfo" --include \*.js .`
-ii. `grep -rlE "LifeValue|CombatInfo" --include \*.js . | xargs code`  
+ii. `grep -rlE "LifeValue|CombatInfo" --include \*.js . | xargs code`
 
     ```bash
     ./Core/Define/Net/Protocol.js
