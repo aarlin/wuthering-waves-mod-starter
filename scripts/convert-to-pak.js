@@ -1,6 +1,6 @@
-const { execSync } = require('child_process');
-const fs = require('fs');
-const path = require('path');
+const { execSync } = require('node:child_process');
+const fs = require('node:fs');
+const path = require('node:path');
 
 // Path to the development directory
 const developmentDir = path.join(__dirname, '../development');
@@ -25,7 +25,7 @@ fs.readdir(developmentDir, (err, files) => {
             try {
                 // Execute the .bat file with the directory as an argument
                 const output = execSync(`"${batScript}" "${filePath}"`, { stdio: 'inherit' });
-                console.log(`Output for ${filePath}:\n`, output.toString());
+                console.log(`Pak creation successful for ${filePath}`);
             } catch (err) {
                 console.error(`Error running UnrealPak-Without-Compression.bat on ${filePath}:`, err);
             }

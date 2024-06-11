@@ -35,6 +35,7 @@ class PlayerInputHandle {
 		this.Sde?.Tick(e);
 	}
 	InputAction(e, t, n) {
+    ScrollingTipsController_1.ScrollingTipsController.ShowTipsByText(`e: ${e}, t: ${t}, n: , ${JSON.stringify(n)}`);
 		(ModelManager_1.ModelManager.PlatformModel?.IsMobileSource() &&
 			ModelManager_1.ModelManager.PlatformModel?.IsKeyFromGamepadKey(n)) ||
 			(this.yde(n) &&
