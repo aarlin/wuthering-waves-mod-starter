@@ -1,29 +1,5 @@
 # Wuthering Waves QoL Mods
 
-## How to Install
-
-1. Copy `~mod` folder over to `\Wuthering Waves\Wuthering Waves Game\Client\Content\Paks\`
-
-2. Find `Wuthering Waves\Wuthering Waves Game\Client\Binaries\Win64\Client-Win64-Shipping.exe`
-
-3. Right-click and create shortcut
-
-4. Right click new shortcut and choose Properties
-
-5. Change target to be `"C:\Program Files\Epic Games\WutheringWavesj3oFh\Wuthering Waves Game\Client\Binaries\Win64\Client-Win64-Shipping.exe" -fileopenlog`
-
-5. Run game with new shortcut
-
-OR
-
-6. Use mod loader: [wuwa_modloader](https://github.com/Sehyn/wuwa_modloader)
-
-## How to Build Locally
-
-1. `npm install`
-
-2. `npm run convertToPak`
-
 ## Reverse Engineering Process
 
 1. Open `C:\Program Files\Epic Games\WutheringWavesj3oFh\Wuthering Waves Game\Client\Content\Paks` using [Fmodel](https://fmodel.app/download)
@@ -36,17 +12,51 @@ OR
 
 5. Open exported folder with VS Code
 
-6. Format minified `.js` files with one of the following:  
-  i. <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> then select `Format Document` and choose Biome
-  ii. <kbd>Shift</kbd> + <kbd>Alt</kbd> + <kbd>F</kbd> inside VS Code
-  iii. run `npx @biomejs/biome format --write .`
+6. Explore code
 
-7. Modify files
+## How to Develop Own Mods
 
-8. Repack modified code using `npm run convertToPak`
-  i. This will take all folders under `development` and convert each folder into a `.pak` file under `~mod`
+1. `npm install`
 
-9. Copy and paste `~mod` folder into `C:\Program Files\Epic Games\WutheringWavesj3oFh\Wuthering Waves Game\Client\Content\Paks`
+2. Create folder structure similar to the existing examples in `development` folder
+
+3. Drag and drop `.js` files from exported pakchunk11 to be modified
+
+4. Format minified `.js` files with one of the following:
+
+    i. <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> then select `Format Document` and choose Biome
+
+    ii. <kbd>Shift</kbd> + <kbd>Alt</kbd> + <kbd>F</kbd> inside VS Code
+
+    iii. run `npx @biomejs/biome format --write .`
+
+> [!NOTE]
+> Formatting with biome requires recommended extensions
+
+![](./assets/extension-recommendations.png)
+
+5. Modify files
+
+6. Repack modified code using `npm run convertToPak`
+  i. This will take all folders under `development` and convert each folder into a `.pak` file under `~mods`
+
+## How to Install Mods
+
+1. Copy `~mods` folder over to `\Wuthering Waves\Wuthering Waves Game\Client\Content\Paks\`
+
+2. Find `Wuthering Waves\Wuthering Waves Game\Client\Binaries\Win64\Client-Win64-Shipping.exe`
+
+3. Right-click and create shortcut
+
+4. Right-click new shortcut and choose Properties
+
+5. Change target to be `"C:\Program Files\Epic Games\WutheringWavesj3oFh\Wuthering Waves Game\Client\Binaries\Win64\Client-Win64-Shipping.exe" -fileopenlog`
+
+5. Open the game with either:
+
+    i. New shortcut
+
+    ii. [wuwa_modloader](https://github.com/Sehyn/wuwa_modloader)
 
 ## Components
 
