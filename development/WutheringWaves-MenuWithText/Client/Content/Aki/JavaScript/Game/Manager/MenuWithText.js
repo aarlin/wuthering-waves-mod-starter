@@ -11,9 +11,6 @@ const UiControllerBase_1 = require("../../Ui/Base/UiControllerBase"),
   ScrollingTipsController_1 = require("../Module/ScrollingTips/ScrollingTipsController");
 
 class MenuWithText extends UiControllerBase_1.UiControllerBase {
-  static Settings = {
-    CurrentString: -1,
-  };
 
   static StartMod() {
     InputSettings_1.InputSettings.AddActionMapping("ShowMenuWithText", "g");
@@ -23,10 +20,6 @@ class MenuWithText extends UiControllerBase_1.UiControllerBase {
     if (InputController_1.InputController.IsCustomKeyUp("g")) {
       this.showConfirmBox('ConfirmBoxTitle', 'ConfirmBoxTextContent', 50)
     }
-  }
-
-  static listenKey(description, key) {
-    return InputController_1.InputController.IsCustomKeyUp(key);
   }
 
   static showConfirmBox(title, textContent, id) {
