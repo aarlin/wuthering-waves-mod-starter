@@ -14,13 +14,13 @@ class MenuWithInput extends UiControllerBase_1.UiControllerBase {
   };
 
   static StartMod() {
-    InputSettings_1.InputSettings.AddActionMapping("ShowMenuWithInput", "F12");
+    InputSettings_1.InputSettings.AddActionMapping("ShowMenuWithInput", "g");
   }
 
   static HandleKeyInputs(keyPressed) {
     ScrollingTipsController_1.ScrollingTipsController.ShowTipsByText(keyPressed)
-    if (InputController_1.InputController.IsCustomKeyUp("F12")) {
-      ScrollingTipsController_1.ScrollingTipsController.ShowTipsByText("F12 key was pressed")
+    if (InputController_1.InputController.IsCustomKeyUp("g")) {
+      ScrollingTipsController_1.ScrollingTipsController.ShowTipsByText("g key was pressed")
       this.showMenuWithInput();
     }
   }
