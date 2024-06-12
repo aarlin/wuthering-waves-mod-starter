@@ -1,13 +1,14 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: !0 }),
-  (exports.QuickSwapTeam = void 0);
-  UiControllerBase_1 = require("../../Ui/Base/UiControllerBase"),
+  (exports.QuickTeamSwap = void 0);
+const UiControllerBase_1 = require("../../Ui/Base/UiControllerBase"),
+  UiManager_1 = require("../../Ui/UiManager"),
   InputSettings_1 = require("../InputSettings/InputSettings"),
   InputController_1 = require("../Input/InputController"),
-  ModelManager_1 = require("./ModelManager"),
+  ModelManager_1 = require("../Manager/ModelManager"),
   ScrollingTipsController_1 = require("../Module/ScrollingTips/ScrollingTipsController");
 
-class QuickSwapTeam extends UiControllerBase_1.UiControllerBase {
+class QuickTeamSwap extends UiControllerBase_1.UiControllerBase {
   static Settings = {
     CurrentTeam: -1,
   };
@@ -23,36 +24,41 @@ class QuickSwapTeam extends UiControllerBase_1.UiControllerBase {
   static HandleKeyInputs() {
     // ScrollingTipsController_1.ScrollingTipsController.ShowTipsByText(JSON.stringify(ModelManager_1.ModelManager.RoleModel.GetRoleList()))
     if (this.listenKey("ChangeToTeam1", "F8")) {
+      this.changeTeam();
       ScrollingTipsController_1.ScrollingTipsController.ShowTipsByText("Changed to Team 1");
       // this.swapTeam(1);
     }
     if (this.listenKey("ChangeToTeam2", "F9")) {
+      this.changeTeam();
       ScrollingTipsController_1.ScrollingTipsController.ShowTipsByText("Changed to Team 2");
       // this.swapTeam(2);
     }
     if (this.listenKey("ChangeToTeam3", "F10")) {
+      this.changeTeam();
       ScrollingTipsController_1.ScrollingTipsController.ShowTipsByText("Changed to Team 3");
       // this.swapTeam(3);
     }
     if (this.listenKey("ChangeToTeam4", "F11")) {
+      this.changeTeam();
       ScrollingTipsController_1.ScrollingTipsController.ShowTipsByText("Changed to Team 4");
       // this.swapTeam(4);
     }
     if (this.listenKey("ChangeToTeam5", "F12")) {
+      this.changeTeam();
       ScrollingTipsController_1.ScrollingTipsController.ShowTipsByText("Changed to Team 5");
       // this.swapTeam(5);
     }
   }
 
-  static AddToggle(desc, key) {
-    InputSettings_1.InputSettings.AddActionMapping(desc, key);
+  static AddToggle(description, key) {
+    InputSettings_1.InputSettings.AddActionMapping(description, key);
   }
-  static RemoveToggle(desc, key) {
-    InputSettings_1.InputSettings.RemoveActionMapping(desc, key);
+  static RemoveToggle(description, key) {
+    InputSettings_1.InputSettings.RemoveActionMapping(description, key);
   }
 
-  static RemoveKey(desc, key) {
-    InputSettings_1.InputSettings.RemoveActionMapping(desc, key);
+  static RemoveKey(description, key) {
+    InputSettings_1.InputSettings.RemoveActionMapping(description, key);
   }
 
   static Toggle(func) {
@@ -61,7 +67,7 @@ class QuickSwapTeam extends UiControllerBase_1.UiControllerBase {
     }
   }
 
-  static listenKey(desc, key) {
+  static listenKey(description, key) {
     return InputController_1.InputController.IsModKeyUp(key);
   }
 
@@ -70,5 +76,21 @@ class QuickSwapTeam extends UiControllerBase_1.UiControllerBase {
     ModelManager_1.ModelManager.RoleSelectModel.SelectedRoleSet.add(teamNumber);
   }
 
+  static changeTeam() {
+    UiManager_1.UiManager.OpenView("CommonSingleInputView", {
+      Title: "Quick Team Swap",
+      CustomFunc: async (string) => {
+        this.Settings.CurrentTeam = string;
+        this.ShowTip("CurrentTeam Changed to: " + string);
+        UiManager_1.UiManager.CloseView("UidView");
+        UiManager_1.UiManager.OpenView("UidView");
+      },
+      InputText: this.Settings.CurrentTeam,
+      DefaultText: "CurrentTeam",
+      IsCheckNone: true,
+      NeedFunctionButton: false,
+    });
+  }
+
 }
-exports.QuickSwapTeam = QuickSwapTeam;
+exports.QuickTeamSwap = QuickTeamSwap;

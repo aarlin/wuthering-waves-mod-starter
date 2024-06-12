@@ -37,9 +37,11 @@
 
 5. Modify files
 
-6. Repack modified code using `npm run convertToPak`
+6. Repack modified code using one of the following:
 
-  i. This will take all folders under `development` and convert each folder into a `.pak` file under `~mods`
+    i. `npm run convertToPak`, which will take all folders under `development` and convert each folder into a `.pak` file under `~mods`
+
+    ii. Drag and drop folder, e.g. `WutheringWaves-QuickSwapTeam` into `UnrealPak-Without-Compression.bat`
 
 ## How to Install Mods
 
