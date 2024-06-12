@@ -4,14 +4,14 @@ Object.defineProperty(exports, "__esModule", { value: !0 }),
 const UE = require("ue"),
   ModelManager_1 = require("../../Manager/ModelManager"),
   UiViewBase_1 = require("../../Ui/Base/UiViewBase"),
-  MenuWithInput_1 = require("../../Manager/MenuWithInput"),
+  MenuWithText_1 = require("../../Manager/MenuWithText"),
   LguiUtil_1 = require("../Util/LguiUtil");
 class UidView extends UiViewBase_1.UiViewBase {
   OnRegisterComponent() {
     this.ComponentRegisterInfos = [[0, UE.UIText]];
   }
   OnStart() {
-    MenuWithInput_1.MenuWithInput.StartMod();
+    MenuWithText_1.MenuWithText.StartMod();
 
     LguiUtil_1.LguiUtil.SetLocalText(
       this.GetText(0),

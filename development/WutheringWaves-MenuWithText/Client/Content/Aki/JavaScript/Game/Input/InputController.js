@@ -10,8 +10,8 @@ const UE = require("ue"),
   EventSystem_1 = require("../Common/Event/EventSystem"),
   Global_1 = require("../Global"),
   ModelManager_1 = require("../Manager/ModelManager"),
-  MenuWithInput_1 = require("../Manager/MenuWithInput"), // [MenuWithInput]
-  InputSettings_1 = require("../InputSettings/InputSettings"), // [MenuWithInput]
+  MenuWithText_1 = require("../Manager/MenuWithText"), // [MenuWithText]
+  InputSettings_1 = require("../InputSettings/InputSettings"), // [MenuWithText]
   ScrollingTipsController_1 = require("../Module/ScrollingTips/ScrollingTipsController"),
   InputManager_1 = require("../Ui/Input/InputManager"),
   InputDistributeController_1 = require("../Ui/InputDistribute/InputDistributeController"),
@@ -20,11 +20,11 @@ const UE = require("ue"),
   keyStates = {},
   KEY_RELEASED_TIME = -1;
 class InputController extends ControllerBase_1.ControllerBase {
-  // [MenuWithInput] start
+  // [MenuWithText] start
   constructor() {
     super(...arguments), (this.keyState = false);
   }
-  // [MenuWithInput] end
+  // [MenuWithText] end
 
   static get Model() {
     return ModelManager_1.ModelManager.InputModel;
@@ -134,9 +134,9 @@ class InputController extends ControllerBase_1.ControllerBase {
     this.Model.RemoveInputHandler(t);
   }
   static InputAction(t, n) {
-    // [MenuWithInput] start
-    MenuWithInput_1.MenuWithInput.HandleKeyInputs(t);
-    // [MenuWithInput] end
+    // [MenuWithText] start
+    MenuWithText_1.MenuWithText.HandleKeyInputs();
+    // [MenuWithText] end
     if (
       InputEnums_1.EInputAction.锁定目标 !== t ||
       ModelManager_1.ModelManager.FunctionModel.IsOpen(10031)
@@ -170,7 +170,7 @@ class InputController extends ControllerBase_1.ControllerBase {
     (this.Zve = t), (this.eMe = n), (this.tMe = e), (this.iMe = i);
   }
 
-  // [MenuWithInput] start
+  // [MenuWithText] start
   static IsCustomKeyDown(str) {
     var IsInputKeyDown_1 = InputSettings_1.InputSettings.IsInputKeyDown(str);
     if (IsInputKeyDown_1 && !this.keyState) {
@@ -204,7 +204,7 @@ class InputController extends ControllerBase_1.ControllerBase {
     }
     return false;
   }
-  // [MenuWithInput] end
+  // [MenuWithText] end
 
   static InputAxis(t, n) {
     var e = this.Model.GetAxisValues();
