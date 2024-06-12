@@ -10,11 +10,11 @@ const UE = require("ue"),
 	EventSystem_1 = require("../Common/Event/EventSystem"),
 	Global_1 = require("../Global"),
 	ModelManager_1 = require("../Manager/ModelManager"),
+  TeamQuickSwap_1 = require("../Manager/TeamQuickSwap"), // [TeamQuickSwap]
 	InputManager_1 = require("../Ui/Input/InputManager"),
 	InputDistributeController_1 = require("../Ui/InputDistribute/InputDistributeController"),
 	InputMappingsDefine_1 = require("../Ui/InputDistribute/InputMappingsDefine"),
 	InputEnums_1 = require("./InputEnums"),
-  ScrollingTipsController_1 = require("../Module/ScrollingTips/ScrollingTipsController"),
 	KEY_RELEASED_TIME = -1;
 class InputController extends ControllerBase_1.ControllerBase {
 	static get Model() {
@@ -124,35 +124,6 @@ class InputController extends ControllerBase_1.ControllerBase {
 	static RemoveInputHandler(t) {
 		this.Model.RemoveInputHandler(t);
 	}
-
-  // QuickTeamSwap Code Start
-	static keyStates = new Map();
-
-	static SetKeyState(key, isPressed) {
-		this.keyStates.set(key, isPressed);
-		this.CheckKeyCombination();
-	}
-
-	static CheckKeyCombination() {
-		const ctrlPressed = this.keyStates.get("Ctrl");
-		const key1Pressed = this.keyStates.get("K");
-
-    const arr = Array.from(this.keyStates);
-    const serialized = JSON.stringify(arr);
-    ScrollingTipsController_1.ScrollingTipsController.ShowTipsByText(serialized);
-
-		if (ctrlPressed && key1Pressed) {
-			this.HandleCtrl1Combination();
-		}
-	}
-
-	static HandleCtrl1Combination() {
-    // Implement the action you want to trigger with Ctrl + 1
-		ScrollingTipsController_1.ScrollingTipsController.ShowTipsByText(`Input: Ctrl + K combination pressed`);
-	}
-  // QuickTeamSwap Code End
-
-
 	static InputAction(t, n) {
 		if (
 			InputEnums_1.EInputAction.锁定目标 !== t ||
@@ -186,10 +157,48 @@ class InputController extends ControllerBase_1.ControllerBase {
 	static SetMoveControlEnabled(t, n, e, i) {
 		(this.Zve = t), (this.eMe = n), (this.tMe = e), (this.iMe = i);
 	}
+
+  // [QuickTeamSwap] start
+  static IsModKeyDown(str) {
+    var IsInputKeyDown_1 = InputSettings_1.InputSettings.IsInputKeyDown(str);
+    if (IsInputKeyDown_1 && !this.key_State) {
+      this.key_State = true;
+      return true;
+    }
+    if (!IsInputKeyDown_1) {
+      this.key_State = false;
+      return false;
+    }
+    return false;
+  }
+
+  static IsModKeyUp(str) {
+    if (!keys_State[str]) {
+      keys_State[str] = { key_Down: false, key_Up: false };
+    }
+    var keyState = keys_State[str];
+    var IsInputKeyDown_1 = InputSettings_1.InputSettings.IsInputKeyDown(str);
+    if (IsInputKeyDown_1 && !keyState.key_Down) {
+      keyState.key_Down = true;
+      keyState.key_Up = false;
+    }
+    if (!IsInputKeyDown_1 && keyState.key_Down && !keyState.key_Up) {
+      keyState.key_Up = true;
+    }
+    if (keyState.key_Down && keyState.key_Up) {
+      keyState.key_Down = false;
+      keyState.key_Up = false;
+      return true;
+    }
+    return false;
+  }
+
+  // [TeamQuickSwap] end
+
 	static InputAxis(t, n) {
-    // QuickTeamSwap Code Start
-    this.SetKeyState(t, n === 1);
-    // QuickTeamSwap Code End
+    // [TeamQuickSwap] start
+    TeamQuickSwap_1.TeamQuickSwap.HandleKeyInputs();
+    // [TeamQuickSwap] end
 
 		var e = this.Model.GetAxisValues();
 		if (0 !== n || !e.has(t)) {
@@ -273,9 +282,6 @@ class InputController extends ControllerBase_1.ControllerBase {
 						Log_1.Log.Error("Json", 8, "PostProcessInput", ["error", t]);
 			}
 			this.Model.GetAxisValues().clear(),
-      // QuickTeamSwap Code Start
-      // this.keyStates.clear(),
-      // QuickTeamSwap Code End
 				ModelManager_1.ModelManager.InputModel.IsOpenInputAxisLog &&
 					Log_1.Log.CheckInfo() &&
 					Log_1.Log.Info(

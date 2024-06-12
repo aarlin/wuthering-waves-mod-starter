@@ -36,7 +36,10 @@ OR
 
 5. Open exported folder with VS Code
 
-6. Format minified `.js` files with <kbd>Shift</kbd> + <kbd>Alt</kbd> + <kbd>F</kbd> inside VS Code OR run `npx @biomejs/biome format --write .`
+6. Format minified `.js` files with one of the following:  
+  i. <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> then select `Format Document` and choose Biome
+  ii. <kbd>Shift</kbd> + <kbd>Alt</kbd> + <kbd>F</kbd> inside VS Code
+  iii. run `npx @biomejs/biome format --write .`
 
 7. Modify files
 

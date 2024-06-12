@@ -14,6 +14,7 @@ const UE = require("ue"),
 	InputDistributeController_1 = require("../Ui/InputDistribute/InputDistributeController"),
 	InputMappingsDefine_1 = require("../Ui/InputDistribute/InputMappingsDefine"),
 	InputEnums_1 = require("./InputEnums"),
+  ScrollingTipsController_1 = require("../Module/ScrollingTips/ScrollingTipsController"),
 	KEY_RELEASED_TIME = -1;
 class InputController extends ControllerBase_1.ControllerBase {
 	static get Model() {
@@ -123,6 +124,35 @@ class InputController extends ControllerBase_1.ControllerBase {
 	static RemoveInputHandler(t) {
 		this.Model.RemoveInputHandler(t);
 	}
+
+  // QuickTeamSwap Code Start
+	static keyStates = new Map();
+
+	static SetKeyState(key, isPressed) {
+		this.keyStates.set(key, isPressed);
+		this.CheckKeyCombination();
+	}
+
+	static CheckKeyCombination() {
+		const ctrlPressed = this.keyStates.get("Ctrl");
+		const key1Pressed = this.keyStates.get("K");
+
+    const arr = Array.from(this.keyStates);
+    const serialized = JSON.stringify(arr);
+    ScrollingTipsController_1.ScrollingTipsController.ShowTipsByText(serialized);
+
+		if (ctrlPressed && key1Pressed) {
+			this.HandleCtrl1Combination();
+		}
+	}
+
+	static HandleCtrl1Combination() {
+    // Implement the action you want to trigger with Ctrl + 1
+		ScrollingTipsController_1.ScrollingTipsController.ShowTipsByText(`Input: Ctrl + K combination pressed`);
+	}
+  // QuickTeamSwap Code End
+
+
 	static InputAction(t, n) {
 		if (
 			InputEnums_1.EInputAction.锁定目标 !== t ||
@@ -157,6 +187,10 @@ class InputController extends ControllerBase_1.ControllerBase {
 		(this.Zve = t), (this.eMe = n), (this.tMe = e), (this.iMe = i);
 	}
 	static InputAxis(t, n) {
+    // QuickTeamSwap Code Start
+    this.SetKeyState(t, n === 1);
+    // QuickTeamSwap Code End
+
 		var e = this.Model.GetAxisValues();
 		if (0 !== n || !e.has(t)) {
 			if (
@@ -239,6 +273,9 @@ class InputController extends ControllerBase_1.ControllerBase {
 						Log_1.Log.Error("Json", 8, "PostProcessInput", ["error", t]);
 			}
 			this.Model.GetAxisValues().clear(),
+      // QuickTeamSwap Code Start
+      // this.keyStates.clear(),
+      // QuickTeamSwap Code End
 				ModelManager_1.ModelManager.InputModel.IsOpenInputAxisLog &&
 					Log_1.Log.CheckInfo() &&
 					Log_1.Log.Info(
