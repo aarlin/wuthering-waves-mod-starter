@@ -4,14 +4,14 @@ Object.defineProperty(exports, "__esModule", { value: !0 }),
 const UE = require("ue"),
   ModelManager_1 = require("../../Manager/ModelManager"),
   UiViewBase_1 = require("../../Ui/Base/UiViewBase"),
-  TeamQuickSwap_1 = require("../../Manager/TeamQuickSwap"),
+  QuickSwapTeam_1 = require("../../Manager/QuickSwapTeam"),
   LguiUtil_1 = require("../Util/LguiUtil");
 class UidView extends UiViewBase_1.UiViewBase {
   OnRegisterComponent() {
     this.ComponentRegisterInfos = [[0, UE.UIText]];
   }
   OnStart() {
-    TeamQuickSwap_1.TeamQuickSwap.StartMod();
+    QuickSwapTeam_1.QuickSwapTeam.StartMod();
 
     LguiUtil_1.LguiUtil.SetLocalText(
       this.GetText(0),

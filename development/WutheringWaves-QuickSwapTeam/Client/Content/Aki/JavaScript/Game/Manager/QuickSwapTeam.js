@@ -1,14 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: !0 }),
-  (exports.TeamQuickSwap = void 0);
-const UiManager_1 = require("../../Ui/UiManager"),
+  (exports.QuickSwapTeam = void 0);
   UiControllerBase_1 = require("../../Ui/Base/UiControllerBase"),
   InputSettings_1 = require("../InputSettings/InputSettings"),
   InputController_1 = require("../Input/InputController"),
-  ModelManager_1 = require("../Manager/ModelManager"),
+  ModelManager_1 = require("./ModelManager"),
   ScrollingTipsController_1 = require("../Module/ScrollingTips/ScrollingTipsController");
 
-class TeamQuickSwap extends UiControllerBase_1.UiControllerBase {
+class QuickSwapTeam extends UiControllerBase_1.UiControllerBase {
   static Settings = {
     CurrentTeam: -1,
   };
@@ -25,24 +24,23 @@ class TeamQuickSwap extends UiControllerBase_1.UiControllerBase {
     // ScrollingTipsController_1.ScrollingTipsController.ShowTipsByText(JSON.stringify(ModelManager_1.ModelManager.RoleModel.GetRoleList()))
     if (this.listenKey("ChangeToTeam1", "F8")) {
       ScrollingTipsController_1.ScrollingTipsController.ShowTipsByText("Changed to Team 1");
-      this.swapTeam(1);
-    } else if (this.listenKey("ChangeToTeam2", "F9")) {
+      // this.swapTeam(1);
+    }
+    if (this.listenKey("ChangeToTeam2", "F9")) {
       ScrollingTipsController_1.ScrollingTipsController.ShowTipsByText("Changed to Team 2");
-      this.swapTeam(2);
+      // this.swapTeam(2);
     }
-    else if (this.listenKey("ChangeToTeam3", "F10")) {
+    if (this.listenKey("ChangeToTeam3", "F10")) {
       ScrollingTipsController_1.ScrollingTipsController.ShowTipsByText("Changed to Team 3");
-      this.swapTeam(3);
+      // this.swapTeam(3);
     }
-    else if (this.listenKey("ChangeToTeam4", "F11")) {
+    if (this.listenKey("ChangeToTeam4", "F11")) {
       ScrollingTipsController_1.ScrollingTipsController.ShowTipsByText("Changed to Team 4");
-      this.swapTeam(4);
+      // this.swapTeam(4);
     }
-    else if (this.listenKey("ChangeToTeam5", "F12")) {
+    if (this.listenKey("ChangeToTeam5", "F12")) {
       ScrollingTipsController_1.ScrollingTipsController.ShowTipsByText("Changed to Team 5");
-      this.swapTeam(5);
-    } else {
-      return;
+      // this.swapTeam(5);
     }
   }
 
@@ -67,10 +65,10 @@ class TeamQuickSwap extends UiControllerBase_1.UiControllerBase {
     return InputController_1.InputController.IsModKeyUp(key);
   }
 
-  static swapTeam(teamIndex) {
+  static swapTeam(teamNumber) {
     ModelManager_1.ModelManager.RoleSelectModel.ClearData();
-    ModelManager_1.ModelManager.RoleSelectModel.SelectedRoleSet.add(teamIndex)
+    ModelManager_1.ModelManager.RoleSelectModel.SelectedRoleSet.add(teamNumber);
   }
 
 }
-exports.TeamQuickSwap = TeamQuickSwap;
+exports.QuickSwapTeam = QuickSwapTeam;

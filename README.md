@@ -28,7 +28,7 @@
 
     ii. <kbd>Shift</kbd> + <kbd>Alt</kbd> + <kbd>F</kbd> inside VS Code
 
-    iii. run `npx @biomejs/biome format --write .`
+    iii. Run `npx @biomejs/biome format --write .`
 
 > [!NOTE]
 > Formatting with biome requires recommended extensions
@@ -38,6 +38,7 @@
 5. Modify files
 
 6. Repack modified code using `npm run convertToPak`
+
   i. This will take all folders under `development` and convert each folder into a `.pak` file under `~mods`
 
 ## How to Install Mods

@@ -10,13 +10,18 @@ const UE = require("ue"),
 	EventSystem_1 = require("../Common/Event/EventSystem"),
 	Global_1 = require("../Global"),
 	ModelManager_1 = require("../Manager/ModelManager"),
-  TeamQuickSwap_1 = require("../Manager/TeamQuickSwap"), // [TeamQuickSwap]
+  QuickSwapTeam_1 = require("../Manager/QuickSwapTeam"), // [QuickSwapTeam]
 	InputManager_1 = require("../Ui/Input/InputManager"),
 	InputDistributeController_1 = require("../Ui/InputDistribute/InputDistributeController"),
 	InputMappingsDefine_1 = require("../Ui/InputDistribute/InputMappingsDefine"),
 	InputEnums_1 = require("./InputEnums"),
+  keyStates = {},
 	KEY_RELEASED_TIME = -1;
 class InputController extends ControllerBase_1.ControllerBase {
+  constructor() {
+    super(...arguments), (this.keyState = false);
+  }
+
 	static get Model() {
 		return ModelManager_1.ModelManager.InputModel;
 	}
@@ -161,44 +166,44 @@ class InputController extends ControllerBase_1.ControllerBase {
   // [QuickTeamSwap] start
   static IsModKeyDown(str) {
     var IsInputKeyDown_1 = InputSettings_1.InputSettings.IsInputKeyDown(str);
-    if (IsInputKeyDown_1 && !this.key_State) {
-      this.key_State = true;
+    if (IsInputKeyDown_1 && !this.keyState) {
+      this.keyState = true;
       return true;
     }
     if (!IsInputKeyDown_1) {
-      this.key_State = false;
+      this.keyState = false;
       return false;
     }
     return false;
   }
 
   static IsModKeyUp(str) {
-    if (!keys_State[str]) {
-      keys_State[str] = { key_Down: false, key_Up: false };
+    if (!keyStates[str]) {
+      keyStates[str] = { keyDown: false, keyUp: false };
     }
-    var keyState = keys_State[str];
-    var IsInputKeyDown_1 = InputSettings_1.InputSettings.IsInputKeyDown(str);
-    if (IsInputKeyDown_1 && !keyState.key_Down) {
-      keyState.key_Down = true;
-      keyState.key_Up = false;
+    let keyState = keyStates[str];
+    let IsInputKeyDown_1 = InputSettings_1.InputSettings.IsInputKeyDown(str);
+    if (IsInputKeyDown_1 && !keyState.keyDown) {
+      keyState.keyDown = true;
+      keyState.keyUp = false;
     }
-    if (!IsInputKeyDown_1 && keyState.key_Down && !keyState.key_Up) {
-      keyState.key_Up = true;
+    if (!IsInputKeyDown_1 && keyState.keyDown && !keyState.keyUp) {
+      keyState.keyUp = true;
     }
-    if (keyState.key_Down && keyState.key_Up) {
-      keyState.key_Down = false;
-      keyState.key_Up = false;
+    if (keyState.keyDown && keyState.keyUp) {
+      keyState.keyDown = false;
+      keyState.keyUp = false;
       return true;
     }
     return false;
   }
 
-  // [TeamQuickSwap] end
+  // [QuickSwapTeam] end
 
 	static InputAxis(t, n) {
-    // [TeamQuickSwap] start
-    TeamQuickSwap_1.TeamQuickSwap.HandleKeyInputs();
-    // [TeamQuickSwap] end
+    // [QuickSwapTeam] start
+    QuickSwapTeam_1.QuickSwapTeam.HandleKeyInputs();
+    // [QuickSwapTeam] end
 
 		var e = this.Model.GetAxisValues();
 		if (0 !== n || !e.has(t)) {
