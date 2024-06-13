@@ -211,7 +211,7 @@ class ModLanguage {
 		},
 	];
 
-	static ModTr = (string) => {
+	static ModTranslation = (string) => {
 		var lang = CurrLang;
 		for (let i = 0; i < ModLanguage.translate.length; i++) {
 			if (lang === "en" && ModLanguage.translate[i].en === string) {

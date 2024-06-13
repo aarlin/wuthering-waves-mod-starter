@@ -9,7 +9,7 @@ const puerts_1 = require("puerts"),
 	TeleportController_1 = require("../../Module/Teleport/TeleportController"),
 	ModTpFile = require("./ModTpFile").ModTpFile;
 const ModLanguage_1 = require("./ModLanguage");
-const ModTr = ModLanguage_1.ModLanguage.ModTr;
+const ModTranslation = ModLanguage_1.ModLanguage.ModTranslation;
 var CurrFile = "None";
 var PrevFile = "None";
 var NextFile = "None";
@@ -26,9 +26,9 @@ class ModCustomTp {
 		this.GetTpInfo();
 		var state = ModManager_1.ModManager.Settings.CustomTp;
 		var title =
-			ModTr("CustomTp State [Insert]:") +
-			(state ? ModTr("ON") : ModTr("OFF")) +
-			ModTr("Shows[Delete]") +
+			ModTranslation("CustomTp State [Insert]:") +
+			(state ? ModTranslation("ON") : ModTranslation("OFF")) +
+			ModTranslation("Shows[Delete]") +
 			" (" +
 			(CurreNum + 1).toString() +
 			"/" +
@@ -37,15 +37,15 @@ class ModCustomTp {
 			CurrPos;
 
 		var readme =
-			ModTr("CurrentFile:") +
+			ModTranslation("CurrentFile:") +
 			CurrFile +
-			ModTr("| PreviousFile[PageUp]: ") +
+			ModTranslation("| PreviousFile[PageUp]: ") +
 			PrevFile +
-			ModTr(" | NextFile[PageDown]: ") +
+			ModTranslation(" | NextFile[PageDown]: ") +
 			NextFile +
-			ModTr(" | PreviousPos[Up]: ") +
+			ModTranslation(" | PreviousPos[Up]: ") +
 			PrevPos +
-			ModTr(" | NextPos[Down]: ") +
+			ModTranslation(" | NextPos[Down]: ") +
 			NextPos;
 		ModManager_1.ModManager.ShowConfirmBox(title, readme, 50);
 	}
