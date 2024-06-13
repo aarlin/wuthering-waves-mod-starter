@@ -12,7 +12,7 @@ const UE = require("ue"),
 	TouchFingerManager_1 = require("../Ui/TouchFinger/TouchFingerManager"),
 	CombinationActionHandle_1 = require("./CombinationActionHandle"),
 	CombinationAxisHandle_1 = require("./CombinationAxisHandle"),
-  ScrollingTipsController_1 = require("../Module/ScrollingTips/ScrollingTipsController"),
+	ScrollingTipsController_1 = require("../Module/ScrollingTips/ScrollingTipsController"),
 	MIN_AXIS_INPUT = 0.1;
 class PlayerInputHandle {
 	constructor() {

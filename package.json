@@ -1,23 +1,23 @@
 {
-  "name": "wuthering-waves-dps-meter",
-  "version": "1.0.0",
-  "description": "## How to Install",
-  "main": "index.js",
-  "scripts": {
-    "convertToPak": "node scripts/convert-to-pak.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/aarlin/wuthering-waves-dps-meter.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/aarlin/wuthering-waves-dps-meter/issues"
-  },
-  "homepage": "https://github.com/aarlin/wuthering-waves-dps-meter#readme",
-  "devDependencies": {
-    "@biomejs/biome": "1.8.0"
-  }
+	"name": "wuthering-waves-dps-meter",
+	"version": "1.0.0",
+	"description": "## How to Install",
+	"main": "index.js",
+	"scripts": {
+		"convertToPak": "node scripts/convert-to-pak.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/aarlin/wuthering-waves-dps-meter.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/aarlin/wuthering-waves-dps-meter/issues"
+	},
+	"homepage": "https://github.com/aarlin/wuthering-waves-dps-meter#readme",
+	"devDependencies": {
+		"@biomejs/biome": "1.8.0"
+	}
 }
