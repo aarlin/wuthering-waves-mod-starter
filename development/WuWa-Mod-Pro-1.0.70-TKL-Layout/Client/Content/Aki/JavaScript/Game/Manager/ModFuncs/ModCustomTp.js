@@ -36,32 +36,38 @@ class ModCustomTp {
 			")" +
 			currentPosition;
 
-    const teleportToggleStatus = [
-      ModTranslation("CurrentFile: ") + currentFile,
-      ModTranslation("PreviousFile[PageUp]: ") + prevFile,
-      ModTranslation("NextFile[PageDown]: ") + nextFile,
-      ModTranslation("PreviousPos[Up]: ") + prevPosition,
-      ModTranslation("NextPos[Down]: ") + nextPosition,
-    ]
+		const teleportToggleStatus = [
+			ModTranslation("CurrentFile: ") + currentFile,
+			ModTranslation("PreviousFile[PageUp]: ") + prevFile,
+			ModTranslation("NextFile[PageDown]: ") + nextFile,
+			ModTranslation("PreviousPos[Up]: ") + prevPosition,
+			ModTranslation("NextPos[Down]: ") + nextPosition,
+		];
 
-		const mergedTeleportToggleStatus = teleportToggleStatus.join(' ');
-		ModManager_1.ModManager.ShowConfirmBox(title, mergedTeleportToggleStatus, 50);
+		const mergedTeleportToggleStatus = teleportToggleStatus.join(" \n");
+		ModManager_1.ModManager.ShowConfirmBox(
+			title,
+			mergedTeleportToggleStatus,
+			50,
+		);
 	}
 	static CustomTpEnable() {
 		this.GetTpInfoFirst();
 		this.ShowCtpState();
 	}
+
 	static CustomTpDisable() {
-		currentFile = "None";
-		prevFile = "None";
-		nextFile = "None";
-		prevPosition = "None";
-		currentPosition = "None";
-		nextPosition = "None";
-		totalNumber = 0;
-		currentNumber = -1;
-		totalFileNumber = 0;
-		currentFileNumber = 0;
+    // Keep track of file even after disabling
+		// currentFile = "None";
+		// prevFile = "None";
+		// nextFile = "None";
+		// prevPosition = "None";
+		// currentPosition = "None";
+		// nextPosition = "None";
+		// totalNumber = 0;
+		// currentNumber = -1;
+		// totalFileNumber = 0;
+		// currentFileNumber = 0;
 	}
 
 	static GetTpInfo() {
@@ -99,16 +105,16 @@ class ModCustomTp {
 	}
 
 	static GetTpInfoFirst() {
-		currentFile = "None";
-		prevFile = "None";
-		nextFile = "None";
-		prevPosition = "None";
-		currentPosition = "None";
-		nextPosition = "None";
-		totalNumber = 0;
-		currentNumber = -1;
-		totalFileNumber = 0;
-		currentFileNumber = 0;
+		// currentFile = "None";
+		// prevFile = "None";
+		// nextFile = "None";
+		// prevPosition = "None";
+		// currentPosition = "None";
+		// nextPosition = "None";
+		// totalNumber = 0;
+		// currentNumber = -1;
+		// totalFileNumber = 0;
+		// currentFileNumber = 0;
 		this.GetTpInfo();
 	}
 
@@ -116,14 +122,8 @@ class ModCustomTp {
 		let x = ModTpFile.CustomTpList[num1][num2].x;
 		let y = ModTpFile.CustomTpList[num1][num2].y;
 		let z = ModTpFile.CustomTpList[num1][num2].z;
-		let PosInfo =
-			"(" +
-			Math.floor(x / 100).toString() +
-			"," +
-			Math.floor(y / 100).toString() +
-			"," +
-			Math.floor(z / 100).toString() +
-			")";
+		let PosInfo = `(${Math.floor(x / 100).toString()},${Math.floor(y / 100).toString()},${Math.floor(z / 100).toString()})`;
+
 		return PosInfo;
 	}
 
@@ -131,10 +131,10 @@ class ModCustomTp {
 		if (currentFileNumber < totalFileNumber) {
 			currentFileNumber = currentFileNumber + 1;
 			currentNumber = 0;
-			ModManager_1.ModManager.ShowTip(
-				"Switch to" + ModTpFile.CustomTpList[currentFileNumber][1].filename,
-			);
-		} else ModManager_1.ModManager.ShowTip("is the last file");
+			ModManager_1.ModManager.ShowTip(`Switch to ${ModTpFile.CustomTpList[currentFileNumber][1].filename}`);
+		} else {
+      ModManager_1.ModManager.ShowTip("is the last file");
+    }
 
 		currentNumber = -1;
 		this.GetTpInfo();
@@ -142,10 +142,10 @@ class ModCustomTp {
 	static SubFile() {
 		if (currentFileNumber > 0) {
 			currentFileNumber = currentFileNumber - 1;
-			ModManager_1.ModManager.ShowTip(
-				"Switch to" + ModTpFile.CustomTpList[currentFileNumber][1].filename,
-			);
-		} else ModManager_1.ModManager.ShowTip("is the first file");
+			ModManager_1.ModManager.ShowTip(`Switch to ${ModTpFile.CustomTpList[currentFileNumber][1].filename}`);
+		} else {
+      ModManager_1.ModManager.ShowTip("is the first file");
+    }
 
 		currentNumber = -1;
 		this.GetTpInfo();
@@ -153,13 +153,17 @@ class ModCustomTp {
 	static AddPos() {
 		if (currentNumber < totalNumber) {
 			currentNumber++;
-		} else ModManager_1.ModManager.ShowTip("is the last pos");
+		} else {
+      ModManager_1.ModManager.ShowTip("is the last pos");
+    }
 		this.GetTpInfo();
 	}
 	static SubPos() {
 		if (currentNumber > 0) {
 			currentNumber--;
-		} else ModManager_1.ModManager.ShowTip("is the first pos");
+		} else {
+      ModManager_1.ModManager.ShowTip("is the first pos");
+    }
 		this.GetTpInfo();
 	}
 
@@ -168,9 +172,7 @@ class ModCustomTp {
 		let y = ModTpFile.CustomTpList[currentFileNumber][currentNumber].y;
 		let z = ModTpFile.CustomTpList[currentFileNumber][currentNumber].z;
 		let tips = this.GetPosInfo(currentFileNumber, currentNumber);
-		ModManager_1.ModManager.ShowTip(
-			"go to" + ModTpFile.CustomTpList[currentFileNumber][currentNumber].name + tips,
-		);
+		ModManager_1.ModManager.ShowTip(`Teleporting to ${ModTpFile.CustomTpList[currentFileNumber][currentNumber].name + tips}`);
 		TeleportController_1.TeleportController.TeleportToPositionNoLoading(
 			new UE.Vector(x, y, z),
 			new UE.Rotator(0, 0, 0),

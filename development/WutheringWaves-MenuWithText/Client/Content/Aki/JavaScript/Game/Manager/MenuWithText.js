@@ -11,7 +11,6 @@ const UiControllerBase_1 = require("../../Ui/Base/UiControllerBase"),
 	ScrollingTipsController_1 = require("../Module/ScrollingTips/ScrollingTipsController");
 
 class MenuWithText extends UiControllerBase_1.UiControllerBase {
-
 	static StartMod() {
 		InputSettings_1.InputSettings.AddActionMapping("ShowMenuWithText", "g");
 	}
@@ -22,11 +21,11 @@ class MenuWithText extends UiControllerBase_1.UiControllerBase {
 		}
 	}
 
-  static showConfirmBox(title, textContent, id) {
-    const confirmBox = new ConfirmBoxDefine_1.ConfirmBoxDataNew(id);
-    confirmBox.SetTextArgs(textContent);
-    confirmBox.SetTitle(title);
-    ConfirmBoxController_1.ConfirmBoxController.ShowConfirmBoxNew(confirmBox);
-  }
+	static showConfirmBox(title, textContent, id) {
+		const confirmBox = new ConfirmBoxDefine_1.ConfirmBoxDataNew(id);
+		confirmBox.SetTextArgs(textContent);
+		confirmBox.SetTitle(title);
+		ConfirmBoxController_1.ConfirmBoxController.ShowConfirmBoxNew(confirmBox);
+	}
 }
 exports.MenuWithText = MenuWithText;
