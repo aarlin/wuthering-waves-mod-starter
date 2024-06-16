@@ -334,6 +334,7 @@ class ModManager {
       this.FuncState(this.Settings.AutoLoot, "AutoLoot[Comma]"),
       this.FuncState(this.Settings.AutoDestroy, "AutoDestroy[Period]"),
       this.FuncState(this.Settings.HideDamage, "HideDamage[Slash]"),
+      this.FuncState(this.Settings.AlwaysCrit, "AlwaysCrit[Backslash]"),
       "ShopMultiplier[Semicolon] | UIDChanger[Apostrophe]"
     ];
 

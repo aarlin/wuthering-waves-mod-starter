@@ -1,1 +1,1 @@
-"C:\Users\Aaron.DESKTOP-CQJECP9\Documents\dev\personal\wuthering-waves-dps-meter\development\WuWa-Mod-Pro-1.0.68-TKL-Layout\*.*" "..\..\..\*.*" 
+"C:\Users\Aaron.DESKTOP-CQJECP9\Documents\dev\personal\wuthering-waves-dps-meter\development\WuWa-Mod-Pro-1.0.70-TKL-Layout\*.*" "..\..\..\*.*" 
