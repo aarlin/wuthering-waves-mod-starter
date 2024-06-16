@@ -1,4 +1,4 @@
-"use strict";
+﻿"use strict";
 Object.defineProperty(exports, "__esModule", { value: !0 }),
 	(exports.InputController = void 0);
 const UE = require("ue"),
