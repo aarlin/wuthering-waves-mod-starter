@@ -7,31 +7,31 @@
 		"enabled": false,
 		"rules": {
 			"recommended": true,
-      "style": {
-        "noCommaOperator": "off",
-        "noVar": "off",
-        "useSingleVarDeclarator": "off",
-        "noParameterAssign": "off",
-        "noArguments": "off",
-        "useTemplate": "off",
-        "useWhile": "off"
-      },
-      "suspicious": {
-        "noAssignInExpressions": "off",
-        "noDoubleEquals": "off",
-        "noRedundantUseStrict": "off",
-        "noRedeclare": "off"
-      },
-      "complexity": {
-        "useArrowFunction": "off",
-        "useLiteralKeys": "off",
-        "noThisInStatic": "off",
-        "noStaticOnlyClass": "off"
-      },
-      "correctness": {
-        "noInnerDeclarations": "off",
-        "noInvalidUseBeforeDeclaration": "off"
-      }
+			"style": {
+				"noCommaOperator": "off",
+				"noVar": "off",
+				"useSingleVarDeclarator": "off",
+				"noParameterAssign": "off",
+				"noArguments": "off",
+				"useTemplate": "off",
+				"useWhile": "off"
+			},
+			"suspicious": {
+				"noAssignInExpressions": "off",
+				"noDoubleEquals": "off",
+				"noRedundantUseStrict": "off",
+				"noRedeclare": "off"
+			},
+			"complexity": {
+				"useArrowFunction": "off",
+				"useLiteralKeys": "off",
+				"noThisInStatic": "off",
+				"noStaticOnlyClass": "off"
+			},
+			"correctness": {
+				"noInnerDeclarations": "off",
+				"noInvalidUseBeforeDeclaration": "off"
+			}
 		}
 	}
 }
