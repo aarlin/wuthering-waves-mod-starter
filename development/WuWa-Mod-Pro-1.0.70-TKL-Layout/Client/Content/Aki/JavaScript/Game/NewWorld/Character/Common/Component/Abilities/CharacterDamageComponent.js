@@ -59,7 +59,7 @@ const Log_1 = require("../../../../../../Core/Common/Log"),
 	ExtraEffectDamageModifier_1 = require("./ExtraEffect/ExtraEffectDamageModifier"),
 	ExtraEffectDamageShare_1 = require("./ExtraEffect/ExtraEffectDamageShare"),
 	ExtraEffectSnapModifier_1 = require("./ExtraEffect/ExtraEffectSnapModifier"),
-  ModManager_1 = require("../../../../../Manager/ModManager"),
+	ModManager_1 = require("../../../../../Manager/ModManager"),
 	damageDataPayloadIdDefault = BigInt(0);
 class SnapshotPayload {
 	constructor() {
@@ -508,7 +508,9 @@ let CharacterDamageComponent =
 					),
 					IsAddEnergy: a.IsAddEnergy,
 					IsCounterAttack: a.IsCounterAttack,
-					ForceCritical: ModManager_1.ModManager.Settings.AlwaysCrit ? true : a.ForceCritical,
+					ForceCritical: ModManager_1.ModManager.Settings.AlwaysCrit
+						? true
+						: a.ForceCritical,
 					IsBlocked: a.IsBlocked,
 					PartId: a.PartId,
 					CounterSkillMessageId: a.CounterSkillMessageId
