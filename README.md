@@ -1,4 +1,4 @@
-# Wuthering Waves QoL Mods
+# Wuthering Waves Mod Starter
 
 ## Reverse Engineering Process
 
@@ -14,13 +14,21 @@
 
 6. Explore code
 
-## How to Develop Own Mods
+## How to Develop Mods
 
 1. `npm install`
 
-2. Create folder structure similar to the existing examples in `development` folder
+2. Create a new folder under `development` that will hold your modified code
 
-3. Drag and drop `.js` files from exported pakchunk11 to be modified
+    i. `mkdir development/WutheringWaves-NewMod`
+
+2. Copy over or create folders and files that will be modified
+
+    i. Copy folders and files from the exported folder from step 5 of [Reverse Engineering Process](#reverse-engineering-process)
+
+    ii. For example, if `InputController.js` is being modified, then add the folders `Client/Aki/Javascript/Game/Input` leading up to `InputController.js` under `WutheringWaves-NewMod`
+
+    iii. Use the existing `WutheringWaves-MenuWithText` inside `development` as reference
 
 4. Format minified `.js` files with one of the following:
 
@@ -35,13 +43,15 @@
 
 ![](./assets/extension-recommendations.png)
 
-5. Modify files
+5. Modify `.js` files
 
 6. Repack modified code using one of the following:
 
     i. `npm run convertToPak`, which will take all folders under `development` and convert each folder into a `.pak` file under `~mods`
 
-    ii. Drag and drop folder, e.g. `WutheringWaves-QuickSwapTeam` into `UnrealPak-Without-Compression.bat`
+    ii. Drag and drop folder, e.g. `WutheringWaves-NewMod` into `UnrealPak-Without-Compression.bat`
+
+    iii. `~mods` folder should now contain `WutheringWaves-NewMod.pak`
 
 ## How to Install Mods
 
