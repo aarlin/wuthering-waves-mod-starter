@@ -1,22 +1,22 @@
 {
-	"name": "wuthering-waves-dps-meter",
+	"name": "wuthering-waves-mod-stater",
 	"version": "1.0.0",
-	"description": "## How to Install",
+	"description": "Starter mod repository for Wuthering Waves",
 	"main": "index.js",
 	"scripts": {
 		"convertToPak": "node scripts/convert-to-pak.js"
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/aarlin/wuthering-waves-dps-meter.git"
+		"url": "git+https://github.com/aarlin/wuthering-waves-mod-starter.git"
 	},
 	"keywords": [],
 	"author": "",
 	"license": "ISC",
 	"bugs": {
-		"url": "https://github.com/aarlin/wuthering-waves-dps-meter/issues"
+		"url": "https://github.com/aarlin/wuthering-waves-mod-starter/issues"
 	},
-	"homepage": "https://github.com/aarlin/wuthering-waves-dps-meter#readme",
+	"homepage": "https://github.com/aarlin/wuthering-waves-mod-starter#readme",
 	"devDependencies": {
 		"@biomejs/biome": "1.8.0"
 	}
