@@ -232,7 +232,8 @@ class PawnInteractController {
 		if (
 			this.Mor &&
 			this.Hte &&
-			this.Hte.Owner && this.InteractEntity &&
+			this.Hte.Owner &&
+			this.InteractEntity &&
 			((this.TempDirectOptionInstances.length = 0),
 			(this.InteractEntity.DirectOptionInstanceIds.length = 0),
 			(this.InteractEntity.DirectOptionNames.length = 0),

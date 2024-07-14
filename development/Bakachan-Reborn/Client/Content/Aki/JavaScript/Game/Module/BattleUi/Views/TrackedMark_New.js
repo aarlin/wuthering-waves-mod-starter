@@ -444,18 +444,18 @@ class TrackedMark extends UiPanelBase_1.UiPanelBase {
 		return (
 			!this.sdt &&
 			!(this.pdt && this.Ddt > this.Rdt) &&
-				!(
-					!ModelManager_1.ModelManager.TrackModel.CanShowInGroup(
-						this.adt,
-						this.ddt,
-					) || !this.ShouldShowTrackMark
-				) &&
-					!(
-						"number" == typeof this.TrackTarget &&
-						!ModelManager_1.ModelManager.CreatureModel.CheckEntityVisible(
-							this.TrackTarget,
-						)
-					) &&
+			!(
+				!ModelManager_1.ModelManager.TrackModel.CanShowInGroup(
+					this.adt,
+					this.ddt,
+				) || !this.ShouldShowTrackMark
+			) &&
+			!(
+				"number" == typeof this.TrackTarget &&
+				!ModelManager_1.ModelManager.CreatureModel.CheckEntityVisible(
+					this.TrackTarget,
+				)
+			) &&
 			(ControllerHolder_1.ControllerHolder.GameModeController.IsInInstance()
 				? !ModelManager_1.ModelManager.GameModeModel.IsMulti &&
 					(ModelManager_1.ModelManager.TrackModel.IsTracking(2, this.hdt) ||

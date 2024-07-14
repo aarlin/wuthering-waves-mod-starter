@@ -172,13 +172,11 @@ class PanelQteView extends UiTickViewBase_1.UiTickViewBase {
 			(t = (e =
 				ModelManager_1.ModelManager.PanelQteModel.GetContext()).GetSourceEntity())) &&
 			((a = t.GetComponent(0).GetCreatureDataId()),
-			t
-				.GetComponent(157)
-				?.AddBuff(this.BuffId, {
-					InstigatorId: a,
-					Reason: "界面QTE输入时添加",
-					PreMessageId: e.PreMessageId,
-				}));
+			t.GetComponent(157)?.AddBuff(this.BuffId, {
+				InstigatorId: a,
+				Reason: "界面QTE输入时添加",
+				PreMessageId: e.PreMessageId,
+			}));
 	}
 	ClearBuff() {
 		this.BuffId = void 0;

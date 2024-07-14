@@ -307,11 +307,9 @@ let ExecutionComponent = class extends EntityComponent_1.EntityComponent {
 	}
 	Ztn(e, t) {
 		return (
-			(t = e
-				.GetComponent(33)
-				?.BeginSkill(t.ExecutionSkillId, {
-					Context: "ExecutionComponent.UseExecutionSkill",
-				})),
+			(t = e.GetComponent(33)?.BeginSkill(t.ExecutionSkillId, {
+				Context: "ExecutionComponent.UseExecutionSkill",
+			})),
 			Log_1.Log.CheckDebug() &&
 				Log_1.Log.Debug(
 					"Battle",
