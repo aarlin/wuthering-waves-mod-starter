@@ -40,7 +40,11 @@ class ModLanguage {
       chs: "自定义传送[Ins]",
       ja: "てきとうな瞬間移動[Ins]",
     },
-    { en: "AutoLoot[Num0]", chs: "自动拾取[Num0]", ja: "自動あっぷる[Num0]" },
+    {
+      en: "AutoLoot[Num0]",
+      chs: "自动拾取[Num0]",
+      ja: "自動あっぷる[Num0]"
+    },
     {
       en: "KunMods v1.1 <color=red>Fix by Succubus</color> [Home] NoACE : <color=green>ON</color> ",
       chs: "坤模组状态 <color=green>WuWa v1.1</color> [Home] 安全保护 : <color=green>开启</color> ",

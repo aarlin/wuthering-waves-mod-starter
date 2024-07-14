@@ -32,41 +32,41 @@ const puerts_1 = require("puerts"),
 class ModManager {
 	static PlayerEntity = null;
 	static Settings = {
-		ModEnabled: !0,
-		GodMode: !0,
-		HitMultiplier: !1,
-		Hitcount: 15,
-		AutoPickTreasure: !1,
-		AntiDither: !0,
-		AutoAbsorb: !1,
-		AlwaysCrit: !1,
-    CritRate: 0,
-		NoCD: !1,
-		InfiniteStamina: !0,
-		killAura: !1,
-		PerceptionRange: !1,
-		Weather: !1,
+		ModEnabled: true,
+		GodMode: false,
+		HitMultiplier: false,
+		Hitcount: 3,
+		AutoPickTreasure: false,
+		AntiDither: false,
+		AutoAbsorb: false,
+		AlwaysCrit: false,
+		CritRate: 0,
+		NoCD: false,
+		InfiniteStamina: false,
+		killAura: false,
+		PerceptionRange: false,
+		Weather: false,
 		WeatherType: 1,
-		MarkTp: !0,
-		CustomTp: !1,
+		MarkTp: true,
+		CustomTp: false,
 		playerSpeedValue: 1,
-		PlayerSpeed: !1,
+		PlayerSpeed: false,
 		worldSpeedValue: 1,
-		WorldSpeed: !1,
-		ShowMenu: !1,
-		AutoLoot: !1,
-		UnlockFPS: !1,
-		ShowFPS: !1,
-		ShowUnit: !1,
-		HideDmgUi: !1,
-		PlotSKIP: !0,
-		QuestTP: !1,
+		WorldSpeed: false,
+		ShowMenu: false,
+		AutoLoot: false,
+		UnlockFPS: false,
+		ShowFPS: false,
+		ShowUnit: false,
+		HideDmgUi: false,
+		PlotSKIP: false,
+		QuestTP: false,
 		fovValue: 75,
-		FOV: !1,
+		FOV: false,
 		MarkX: 0,
 		MarkY: 0,
 		MarkZ: 0,
-		Uid: "Personal Mod Manager | Original Author KunMod | Updated by BakaChan for WuWa 1.1",
+		Uid: "Re:Re: v1.1.1 Original by KunMod & BakaChan",
 	};
 	static ModStart() {
 		ModDebuger_1.ModDebuger.TestMethod(),
@@ -98,107 +98,107 @@ class ModManager {
 			this.listenMod("PerceptionRange", "F10", "PerceptionRange"),
 			this.listenMod("NoCD", "F11", "NoCD"),
 			this.listenMod("AlwaysCrit", "p", "AlwaysCrit") &&
-        this.Settings.AlwaysCrit &&
-        ModUtils_1.ModUtils.KuroSingleInputBox({
-          TitleTextArgs: ModTr("CritRate: Please enter crit rate"),
-          ConfirmFunc: async (t) => {
-            var e = ModUtils_1.ModUtils.StringToInt(t);
-            "error" !== e && (this.Settings.CritRate = e);
-          },
-          InputText: this.Settings.CritRate.toString(),
-          DefaultText: ModTr("Please enter crit rate"),
-          IsCheckNone: !0,
-          NeedFunctionButton: !1,
-        }),
+			this.Settings.AlwaysCrit &&
+			ModUtils_1.ModUtils.KuroSingleInputBox({
+				TitleTextArgs: ModTr("CritRate: Please enter crit rate"),
+				ConfirmFunc: async (t) => {
+					var e = ModUtils_1.ModUtils.StringToInt(t);
+					"error" !== e && (this.Settings.CritRate = e);
+				},
+				InputText: this.Settings.CritRate.toString(),
+				DefaultText: ModTr("Please enter crit rate"),
+				IsCheckNone: !0,
+				NeedFunctionButton: !1,
+			}),
 			this.listenMod("PlotSKIP", "Slash", "PlotSKIP"),
 			this.listenMod("QuestTP", "Comma", "QuestTP"),
 			this.listenKey("ShowMenu", "Home") && this.ShowMenu(),
 			this.listenMod("UnlockFPS", "LeftBracket", "UnlockFPS") &&
-				this.FPSUnlocker(this.Settings.UnlockFPS),
+			this.FPSUnlocker(this.Settings.UnlockFPS),
 			this.listenMod("ShowFPS", "RightBracket", "ShowFPS") && this.ShowFPS(),
 			this.listenMod("ShowUnit", "i", "ShowUnit") && this.ShowUnit(),
 			this.listenMod("FOV", "Equals", "FOV") &&
-				(this.Settings.FOV
-					? ModUtils_1.ModUtils.KuroSingleInputBox({
-							TitleTextArgs: ModTr("Fov: Select FOV"),
-							ConfirmFunc: async (t) => {
-								var e = ModUtils_1.ModUtils.StringToInt(t);
-								"error" !== e && ((this.Settings.fovValue = e), this.SetFOV(e));
-							},
-							InputText: this.Settings.fovValue.toString(),
-							DefaultText: ModTr("Please enter fov value"),
-							IsCheckNone: !0,
-							NeedFunctionButton: !1,
-						})
-					: this.SetFOV(75)),
+			(this.Settings.FOV
+				? ModUtils_1.ModUtils.KuroSingleInputBox({
+					TitleTextArgs: ModTr("Fov: Select FOV"),
+					ConfirmFunc: async (t) => {
+						var e = ModUtils_1.ModUtils.StringToInt(t);
+						"error" !== e && ((this.Settings.fovValue = e), this.SetFOV(e));
+					},
+					InputText: this.Settings.fovValue.toString(),
+					DefaultText: ModTr("Please enter fov value"),
+					IsCheckNone: !0,
+					NeedFunctionButton: !1,
+				})
+				: this.SetFOV(75)),
 			this.listenMod("HideDmgUi", "Period", "HideDmgUi"),
 			this.listenMod("GodMode", "F5", "GodMode"),
 			this.listenMod("HitMultiplier", "F6", "HitMultiplier") &&
-				this.Settings.HitMultiplier &&
-				ModUtils_1.ModUtils.KuroSingleInputBox({
-					TitleTextArgs: ModTr("HitMultiplier:Please enter hit count"),
-					ConfirmFunc: async (t) => {
-						var e = ModUtils_1.ModUtils.StringToInt(t);
-						"error" !== e && (this.Settings.Hitcount = e);
-					},
-					InputText: this.Settings.Hitcount.toString(),
-					DefaultText: ModTr("Please enter hit count"),
-					IsCheckNone: !0,
-					NeedFunctionButton: !1,
-				}),
+			this.Settings.HitMultiplier &&
+			ModUtils_1.ModUtils.KuroSingleInputBox({
+				TitleTextArgs: ModTr("HitMultiplier:Please enter hit count"),
+				ConfirmFunc: async (t) => {
+					var e = ModUtils_1.ModUtils.StringToInt(t);
+					"error" !== e && (this.Settings.Hitcount = e);
+				},
+				InputText: this.Settings.Hitcount.toString(),
+				DefaultText: ModTr("Please enter hit count"),
+				IsCheckNone: !0,
+				NeedFunctionButton: !1,
+			}),
 			this.listenKey("MarkTp", "Semicolon") && this.MarkTp(),
 			this.listenMod("PlayerSpeed", "F12", "PlayerSpeed") &&
-				(this.Settings.PlayerSpeed
-					? ModUtils_1.ModUtils.KuroSingleInputBox({
-							TitleTextArgs: "blank",
-							ConfirmFunc: async (t) => {
-								var e = ModUtils_1.ModUtils.StringToInt(t);
-								"error" !== e && (this.Settings.playerSpeedValue = e);
-							},
-							InputText: this.Settings.playerSpeedValue.toString(),
-							DefaultText: ModTr("Please enter speed value"),
-							IsCheckNone: !0,
-							NeedFunctionButton: !1,
-						})
-					: (this.Settings.playerSpeedValue = 1)),
+			(this.Settings.PlayerSpeed
+				? ModUtils_1.ModUtils.KuroSingleInputBox({
+					TitleTextArgs: "blank",
+					ConfirmFunc: async (t) => {
+						var e = ModUtils_1.ModUtils.StringToInt(t);
+						"error" !== e && (this.Settings.playerSpeedValue = e);
+					},
+					InputText: this.Settings.playerSpeedValue.toString(),
+					DefaultText: ModTr("Please enter speed value"),
+					IsCheckNone: !0,
+					NeedFunctionButton: !1,
+				})
+				: (this.Settings.playerSpeedValue = 1)),
 			this.SetPlayerSpeed(this.Settings.playerSpeedValue),
 			this.listenMod("WorldSpeed", "Backslash", "WorldSpeed") &&
-				(this.Settings.WorldSpeed
-					? ModUtils_1.ModUtils.KuroSingleInputBox({
-							TitleTextArgs: "blank",
-							ConfirmFunc: async (t) => {
-								var e = ModUtils_1.ModUtils.StringToInt(t);
-								"error" !== e &&
-									((this.Settings.worldSpeedValue = e),
-									this.SetWorldTimeDilation(e));
-							},
-							InputText: this.Settings.worldSpeedValue.toString(),
-							DefaultText: ModTr("Please enter world speed value"),
-							IsCheckNone: !0,
-							NeedFunctionButton: !1,
-						})
-					: this.SetWorldTimeDilation(1)),
+			(this.Settings.WorldSpeed
+				? ModUtils_1.ModUtils.KuroSingleInputBox({
+					TitleTextArgs: "blank",
+					ConfirmFunc: async (t) => {
+						var e = ModUtils_1.ModUtils.StringToInt(t);
+						"error" !== e &&
+							((this.Settings.worldSpeedValue = e),
+								this.SetWorldTimeDilation(e));
+					},
+					InputText: this.Settings.worldSpeedValue.toString(),
+					DefaultText: ModTr("Please enter world speed value"),
+					IsCheckNone: !0,
+					NeedFunctionButton: !1,
+				})
+				: this.SetWorldTimeDilation(1)),
 			this.listenMod("CustomTp", "Insert", "CustomTp") &&
-				(this.Settings.CustomTp
-					? ModCustomTp_1.ModCustomTp.CustomTpEnable()
-					: ModCustomTp_1.ModCustomTp.CustomTpDisable()),
+			(this.Settings.CustomTp
+				? ModCustomTp_1.ModCustomTp.CustomTpEnable()
+				: ModCustomTp_1.ModCustomTp.CustomTpDisable()),
 			this.Settings.CustomTp &&
-				(ModCustomTp_1.ModCustomTp.listenAuto(),
+			(ModCustomTp_1.ModCustomTp.listenAuto(),
 				ModCustomTp_1.ModCustomTp.listenSelect(),
 				ModCustomTp_1.ModCustomTp.listenDelay(),
 				this.listenKey("ShowTpState", "Delete") &&
-					ModCustomTp_1.ModCustomTp.ShowCtpState(),
+				ModCustomTp_1.ModCustomTp.ShowCtpState(),
 				this.listenKey("PreviousFile", "PageUp") &&
-					ModCustomTp_1.ModCustomTp.SubFile(),
+				ModCustomTp_1.ModCustomTp.SubFile(),
 				this.listenKey("NextFile", "PageDown") &&
-					ModCustomTp_1.ModCustomTp.AddFile(),
+				ModCustomTp_1.ModCustomTp.AddFile(),
 				this.listenKey("PreviousPos", "Up") &&
-					(ModCustomTp_1.ModCustomTp.SubPos(),
+				(ModCustomTp_1.ModCustomTp.SubPos(),
 					ModCustomTp_1.ModCustomTp.GoTp()),
 				this.listenKey("NextPos", "Down") &&
-					(ModCustomTp_1.ModCustomTp.AddPos(),
+				(ModCustomTp_1.ModCustomTp.AddPos(),
 					ModCustomTp_1.ModCustomTp.GoTp()));
-			// puerts_1.logger.warn("[BAKALOG]:TEST", "FUCK");
+		// puerts_1.logger.warn("[BAKALOG]:TEST", "FUCK");
 	}
 	static AddToggle(t, e) {
 		InputSettings_1.InputSettings.AddActionMapping(t, e);
@@ -228,7 +228,7 @@ class ModManager {
 			!!InputController_1.InputController.IsMyKeyUp(e) &&
 			(this.Settings.hasOwnProperty(t) &&
 				((this.Settings[t] = !this.Settings[t]), this.ShowFuncStateTip(t, o)),
-			!0)
+				!0)
 		);
 	}
 	static listenKey(t, e) {
@@ -310,9 +310,9 @@ class ModManager {
 				this.FuncState(this.Settings.MarkTp, "MarkTp[Semicolon]") +
 				this.FuncState(this.Settings.QuestTP, "QuestTP[Comma]") +
 				this.FuncState(this.Settings.InfiniteStamina, "InfiniteStamina") +
-				this.FuncState(!0, "DisableAntiCheat");
+				this.FuncState(true, "DisableAntiCheat");
 		t.SetTextArgs(e),
-			t.SetTitle(ModTr("KunMods 1.1<color=red> Fix by BakaChan <3 </color>")),
+			t.SetTitle(ModTr("KunMod & BakaChan <color=red>Re:Re: v1.1.1</color>")),
 			ConfirmBoxController_1.ConfirmBoxController.ShowConfirmBoxNew(t);
 	}
 	static MarkTp() {
@@ -325,7 +325,7 @@ class ModManager {
 	static GetEntityList() {
 		return ModelManager_1.ModelManager.CreatureModel.GetAllEntities();
 	}
-	static SpawnEntity() {}
+	static SpawnEntity() { }
 	static GetPlayerEntity() {
 		return (
 			(this.PlayerEntity =
