@@ -521,7 +521,7 @@ let CharacterDamageComponent = (CharacterDamageComponent_1 = class extends (
 				),
 				s9n: e.IsAddEnergy,
 				a9n: e.IsCounterAttack,
-				h9n: !!ModManager_1.ModManager.Settings.AlwaysCrit || e.ForceCritical,
+				h9n: (ModManager_1.ModManager.Settings.AlwaysCrit && (Math.random() * 100 <= ModManager_1.ModManager.Settings.CritRate)) || e.ForceCritical,
 				l9n: e.IsBlocked,
 				o9n: e.PartId,
 				_9n: e.CounterSkillMessageId

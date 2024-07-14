@@ -165,17 +165,18 @@ class TeleportController extends ControllerBase_1.ControllerBase {
 					: ((d.TargetRotation.Pitch = 0),
 						(d.TargetRotation.Yaw = n?.Valid ? n.ActorRotationProxy.Yaw : 0)),
 				(d.TargetRotation.Roll = 0),
-				Log_1.Log.CheckInfo() &&
-					Log_1.Log.Info(
-						"Teleport",
-						30,
-						"无加载传送:开始",
-						["开始位置", n.ActorLocationProxy],
-						["目标位置", e],
-						["开始角度", n.ActorRotationProxy.Yaw],
-						["目标角度", o],
-						["Reason", r],
-					),
+        // MOD: Teleport Logs
+				// Log_1.Log.CheckInfo() &&
+				// 	Log_1.Log.Info(
+				// 		"Teleport",
+				// 		30,
+				// 		"无加载传送:开始",
+				// 		["开始位置", n.ActorLocationProxy],
+				// 		["目标位置", e],
+				// 		["开始角度", n.ActorRotationProxy.Yaw],
+				// 		["目标角度", o],
+				// 		["Reason", r],
+				// 	),
 				(d.IsTeleport = !0),
 				(ModelManager_1.ModelManager.GameModeModel.LoadingPhase = 2),
 				(ModelManager_1.ModelManager.GameModeModel.IsTeleport = !0),
@@ -324,19 +325,20 @@ class TeleportController extends ControllerBase_1.ControllerBase {
 				: ((n.TargetRotation.Pitch = 0),
 					(n.TargetRotation.Yaw = l?.Valid ? l.ActorRotationProxy.Yaw : 0)),
 			(n.TargetRotation.Roll = 0),
-			Log_1.Log.CheckInfo() &&
-				Log_1.Log.Info(
-					"Teleport",
-					30,
-					"传送:开始",
-					["开始位置", n.StartPosition],
-					["目标位置", n.TargetPosition],
-					["开始角度", n.StartRotation.Yaw],
-					["目标角度", n.TargetRotation.Yaw],
-					["原因", t.TeleportReason],
-					["传送类型", t.CtxType],
-					["Reason", r],
-				),
+      // MOD: Teleport Logs
+			// Log_1.Log.CheckInfo() &&
+			// 	Log_1.Log.Info(
+			// 		"Teleport",
+			// 		30,
+			// 		"传送:开始",
+			// 		["开始位置", n.StartPosition],
+			// 		["目标位置", n.TargetPosition],
+			// 		["开始角度", n.StartRotation.Yaw],
+			// 		["目标角度", n.TargetRotation.Yaw],
+			// 		["原因", t.TeleportReason],
+			// 		["传送类型", t.CtxType],
+			// 		["Reason", r],
+			// 	),
 			(n.IsTeleport = !0),
 			ModelManager_1.ModelManager.GameModeModel.SetBornInfo(e, o),
 			(ModelManager_1.ModelManager.GameModeModel.IsTeleport = !0),
@@ -345,11 +347,12 @@ class TeleportController extends ControllerBase_1.ControllerBase {
 				"TeleportToPositionImpl",
 			),
 			(ModelManager_1.ModelManager.GameModeModel.RenderAssetDone = !1),
-			Log_1.Log.CheckInfo() &&
-				Log_1.Log.Info("Teleport", 30, "传送:处理开始事件(开始)", [
-					"Reason",
-					r,
-				]),
+      // MOD: Teleport Logs
+			// Log_1.Log.CheckInfo() &&
+			// 	Log_1.Log.Info("Teleport", 30, "传送:处理开始事件(开始)", [
+			// 		"Reason",
+			// 		r,
+			// 	]),
 			EventSystem_1.EventSystem.Emit(
 				EventDefine_1.EEventName.TeleportStart,
 				!0,
@@ -359,8 +362,9 @@ class TeleportController extends ControllerBase_1.ControllerBase {
 					a.Entity,
 					EventDefine_1.EEventName.TeleportStartEntity,
 				),
-			Log_1.Log.CheckInfo() &&
-				Log_1.Log.Info("Teleport", 30, "传送:处理开始事件(完成)"),
+      // MOD: Teleport Logs
+			// Log_1.Log.CheckInfo() &&
+			// 	Log_1.Log.Info("Teleport", 30, "传送:处理开始事件(完成)"),
 			n.CreatePromise(),
 			(ModelManager_1.ModelManager.GameModeModel.LoadingPhase = 3),
 			t.TeleportReason)
@@ -967,30 +971,31 @@ class TeleportController extends ControllerBase_1.ControllerBase {
 				),
 			ModelManager_1.ModelManager.TeleportModel.IsTeleport)
 		)
-			(TeleportController.byo = e),
-				Log_1.Log.CheckDebug() &&
-					Log_1.Log.Debug(
-						"Teleport",
-						30,
-						"传送: 传送中，缓存TeleportNotify",
-						[
-							"开始位置",
-							ModelManager_1.ModelManager.TeleportModel.StartPosition,
-						],
-						[
-							"目标位置",
-							ModelManager_1.ModelManager.TeleportModel.TargetPosition,
-						],
-						[
-							"开始角度",
-							ModelManager_1.ModelManager.TeleportModel.StartRotation.Yaw,
-						],
-						[
-							"目标角度",
-							ModelManager_1.ModelManager.TeleportModel.TargetRotation.Yaw,
-						],
-						["原因", t.TeleportReason],
-					);
+			(TeleportController.byo = e);
+        // MOD: Teleport Logs
+				// Log_1.Log.CheckDebug() &&
+				// 	Log_1.Log.Debug(
+				// 		"Teleport",
+				// 		30,
+				// 		"传送: 传送中，缓存TeleportNotify",
+				// 		[
+				// 			"开始位置",
+				// 			ModelManager_1.ModelManager.TeleportModel.StartPosition,
+				// 		],
+				// 		[
+				// 			"目标位置",
+				// 			ModelManager_1.ModelManager.TeleportModel.TargetPosition,
+				// 		],
+				// 		[
+				// 			"开始角度",
+				// 			ModelManager_1.ModelManager.TeleportModel.StartRotation.Yaw,
+				// 		],
+				// 		[
+				// 			"目标角度",
+				// 			ModelManager_1.ModelManager.TeleportModel.TargetRotation.Yaw,
+				// 		],
+				// 		["原因", t.TeleportReason],
+				// 	);
 		else {
 			switch (((TeleportController.byo = void 0), t.TeleportReason)) {
 				case Protocol_1.Aki.Protocol.EOs.Proto_Action:

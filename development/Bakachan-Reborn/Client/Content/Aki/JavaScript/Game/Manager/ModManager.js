@@ -40,6 +40,7 @@ class ModManager {
 		AntiDither: !0,
 		AutoAbsorb: !1,
 		AlwaysCrit: !1,
+    CritRate: 0,
 		NoCD: !1,
 		InfiniteStamina: !0,
 		killAura: !1,
@@ -96,7 +97,19 @@ class ModManager {
 			this.listenMod("AutoAbsorb", "F8", "AutoAbsorb"),
 			this.listenMod("PerceptionRange", "F10", "PerceptionRange"),
 			this.listenMod("NoCD", "F11", "NoCD"),
-			this.listenMod("AlwaysCrit", "p", "AlwaysCrit"),
+			this.listenMod("AlwaysCrit", "p", "AlwaysCrit") &&
+        this.Settings.AlwaysCrit &&
+        ModUtils_1.ModUtils.KuroSingleInputBox({
+          TitleTextArgs: ModTr("CritRate: Please enter crit rate"),
+          ConfirmFunc: async (t) => {
+            var e = ModUtils_1.ModUtils.StringToInt(t);
+            "error" !== e && (this.Settings.CritRate = e);
+          },
+          InputText: this.Settings.CritRate.toString(),
+          DefaultText: ModTr("Please enter crit rate"),
+          IsCheckNone: !0,
+          NeedFunctionButton: !1,
+        }),
 			this.listenMod("PlotSKIP", "Slash", "PlotSKIP"),
 			this.listenMod("QuestTP", "Comma", "QuestTP"),
 			this.listenKey("ShowMenu", "Home") && this.ShowMenu(),
@@ -184,8 +197,8 @@ class ModManager {
 					ModCustomTp_1.ModCustomTp.GoTp()),
 				this.listenKey("NextPos", "Down") &&
 					(ModCustomTp_1.ModCustomTp.AddPos(),
-					ModCustomTp_1.ModCustomTp.GoTp())),
-			puerts_1.logger.warn("[BAKALOG]:TEST", "FUCK");
+					ModCustomTp_1.ModCustomTp.GoTp()));
+			// puerts_1.logger.warn("[BAKALOG]:TEST", "FUCK");
 	}
 	static AddToggle(t, e) {
 		InputSettings_1.InputSettings.AddActionMapping(t, e);
