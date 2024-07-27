@@ -63,7 +63,7 @@
 
 4. Right-click new shortcut and choose Properties
 
-5. Change target to be `"C:\Program Files\Epic Games\WutheringWavesj3oFh\Wuthering Waves Game\Client\Binaries\Win64\Client-Win64-Shipping.exe" -fileopenlog`
+5. Change target to be `"C:\Program Files\Epic Games\WutheringWavesj3oFh\Wuthering Waves Game\Client\Binaries\Win64\Client-Win64-Shipping.exe" -fileopenlog -SkipSplash`
 
 5. Open the game with either:
 
