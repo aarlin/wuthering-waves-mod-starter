@@ -4,7 +4,7 @@
 
 1. Open `C:\Program Files\Epic Games\WutheringWavesj3oFh\Wuthering Waves Game\Client\Content\Paks` using [Fmodel](https://fmodel.app/download)
 
-2. Under Directory > AES, add AES key: `0x43C51CC2369B9DD195EDCF426C78E30E99D7514DC14E8C03A831E128A3941010` as of patch 1.1.0, see this repository for newer AES keys: [ClostroOffi/wuwa-aes-archive](https://github.com/ClostroOffi/wuwa-aes-archive)
+2. Under Directory > AES, add AES key: `0x4D65747EDEB74A1DE116B1DD147CF79CD6C082F0DB7908E1BBD37F0428426469` as of patch 1.2.0, see this repository for newer AES keys: [ClostroOffi/wuwa-aes-archive](https://github.com/ClostroOffi/wuwa-aes-archive)
 
 3. Load `pakchunk11-WindowsNoEditor.pak` in Archives menu
 
