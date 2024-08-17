@@ -13,7 +13,7 @@ const UE = require("ue"),
 	RoleStateView_1 = require("../RoleStateView"),
 	SpecialEnergyBarContainer_1 = require("../SpecialEnergy/SpecialEnergyBarContainer"),
 	BattleChildViewPanel_1 = require("./BattleChildViewPanel");
-var EAttributeId = Protocol_1.Aki.Protocol.KBs;
+var EAttributeId = Protocol_1.Aki.Protocol.Bks;
 class BottomPanel extends BattleChildViewPanel_1.BattleChildViewPanel {
 	constructor() {
 		super(...arguments),

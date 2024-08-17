@@ -53,7 +53,6 @@ class ConfigManager extends ConfigManagerBase_1.ConfigManagerBase {}
 	(ConfigManager.BuffItemConfig = void 0),
 	(ConfigManager.WorldConfig = void 0),
 	(ConfigManager.PlayerInfoConfig = void 0),
-	(ConfigManager.ProtocolMonitorConfig = void 0),
 	(ConfigManager.SwimConfig = void 0),
 	(ConfigManager.RedDotConfig = void 0),
 	(ConfigManager.MenuBaseConfig = void 0),

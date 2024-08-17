@@ -5,7 +5,7 @@ const Log_1 = require("../../../Core/Common/Log"),
 	Protocol_1 = require("../../../Core/Define/Net/Protocol"),
 	ConfigManager_1 = require("../../Manager/ConfigManager"),
 	ModelManager_1 = require("../../Manager/ModelManager");
-var EAttributeId = Protocol_1.Aki.Protocol.KBs;
+var EAttributeId = Protocol_1.Aki.Protocol.Bks;
 const TEN_THOUSANDTH_RATIO = 1e4;
 class UseBuffItemRoleData {
 	constructor(t, e, r, o, i, n, a, s) {

@@ -74,7 +74,6 @@ class ControllerHolder {}
 	(ControllerHolder.CursorController = void 0),
 	(ControllerHolder.BuffItemControl = void 0),
 	(ControllerHolder.MarqueeController = void 0),
-	(ControllerHolder.ProtocolMonitorController = void 0),
 	(ControllerHolder.TrackController = void 0),
 	(ControllerHolder.MenuController = void 0),
 	(ControllerHolder.RenderModuleController = void 0),

@@ -12,7 +12,7 @@ const Protocol_1 = require("../../../../../Core/Define/Net/Protocol"),
 	SkillNodeDataInfo_1 = require("../../RoleData/Module/DataInfo/SkillNodeDataInfo"),
 	RoleSkillData_1 = require("../../RoleData/Module/RoleSkillData"),
 	RoleDataBase_1 = require("../../RoleData/RoleDataBase");
-var EAttributeId = Protocol_1.Aki.Protocol.KBs;
+var EAttributeId = Protocol_1.Aki.Protocol.Bks;
 class RoleInstance extends RoleDataBase_1.RoleDataBase {
 	constructor(e) {
 		super(e), (this.CreateTime = 0);

@@ -20,7 +20,7 @@ const Protocol_1 = require("../../../../Core/Define/Net/Protocol"),
 	GameplayTagUtils_1 = require("../../../../Core/Utils/GameplayTagUtils"),
 	Global_1 = require("../../../Global"),
 	ModelManager_1 = require("../../../Manager/ModelManager");
-var EAttributeId = Protocol_1.Aki.Protocol.KBs;
+var EAttributeId = Protocol_1.Aki.Protocol.Bks;
 const energyAttrIds = [
 	EAttributeId.Proto_Energy,
 	EAttributeId.Proto_SpecialEnergy1,

@@ -5,7 +5,7 @@ const Protocol_1 = require("../../../../../../../Core/Define/Net/Protocol"),
 	AbilityUtils_1 = require("../AbilityUtils"),
 	CharacterAttributeTypes_1 = require("../CharacterAttributeTypes"),
 	ExtraEffectBase_1 = require("./ExtraEffectBase");
-var EAttributeId = Protocol_1.Aki.Protocol.KBs;
+var EAttributeId = Protocol_1.Aki.Protocol.Bks;
 class DamageAugment extends ExtraEffectBase_1.BuffEffect {
 	constructor() {
 		super(...arguments),

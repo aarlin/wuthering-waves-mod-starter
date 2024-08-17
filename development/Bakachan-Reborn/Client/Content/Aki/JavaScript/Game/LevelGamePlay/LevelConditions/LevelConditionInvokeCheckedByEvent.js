@@ -19,7 +19,7 @@ const Log_1 = require("../../../Core/Common/Log"),
 	SceneTeamDefine_1 = require("../../Module/SceneTeam/SceneTeamDefine"),
 	LevelGeneralBase_1 = require("../LevelGeneralBase"),
 	LevelGeneralDefine_1 = require("../LevelGeneralDefine");
-var EAttributeId = Protocol_1.Aki.Protocol.KBs;
+var EAttributeId = Protocol_1.Aki.Protocol.Bks;
 class LevelConditionFunctionUnlock extends LevelGeneralBase_1.LevelConditionBase {
 	Check(e, o, ...n) {
 		var t, r;

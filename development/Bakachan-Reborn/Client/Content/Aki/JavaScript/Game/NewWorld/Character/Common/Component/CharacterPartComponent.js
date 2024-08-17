@@ -31,7 +31,7 @@ const Log_1 = require("../../../../../Core/Common/Log"),
 	ModelManager_1 = require("../../../../Manager/ModelManager"),
 	CombatMessage_1 = require("../../../../Module/CombatMessage/CombatMessage"),
 	CombatDebugController_1 = require("../../../../Utils/CombatDebugController");
-var EAttributeId = Protocol_1.Aki.Protocol.KBs;
+var EAttributeId = Protocol_1.Aki.Protocol.Bks;
 const GlobalData_1 = require("../../../../GlobalData"),
 	RegisterComponent_1 = require("../../../../../Core/Entity/RegisterComponent");
 class CharacterPart {

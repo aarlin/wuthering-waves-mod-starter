@@ -18,7 +18,7 @@ Object.defineProperty(exports, "__esModule", { value: !0 }),
 		exports.EAttributeId =
 			void 0);
 const Protocol_1 = require("../../../../../../Core/Define/Net/Protocol");
-var EAttributeId = Protocol_1.Aki.Protocol.KBs;
+var EAttributeId = Protocol_1.Aki.Protocol.Bks;
 (exports.EAttributeId = EAttributeId),
 	(exports.ATTRIBUTE_ID_MAX = Protocol_1.Aki.Protocol.KBs.EAttributeType_MAX),
 	(exports.ELEMENT_POWER_MAX = 1e4),

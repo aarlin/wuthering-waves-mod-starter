@@ -7,7 +7,7 @@ const Protocol_1 = require("../../../../../Core/Define/Net/Protocol"),
 	ConfigManager_1 = require("../../../../Manager/ConfigManager"),
 	BattleUiControl_1 = require("../../BattleUiControl"),
 	BattleEntityChildView_1 = require("../BattleChildView/BattleEntityChildView");
-var EAttributeId = Protocol_1.Aki.Protocol.KBs;
+var EAttributeId = Protocol_1.Aki.Protocol.Bks;
 const PERCENT_RATE = 100;
 class BossStateViewBase extends BattleEntityChildView_1.BattleEntityChildView {
 	constructor() {

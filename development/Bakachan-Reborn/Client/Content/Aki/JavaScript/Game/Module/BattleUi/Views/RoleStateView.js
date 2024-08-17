@@ -12,7 +12,7 @@ const UE = require("ue"),
 	LevelSequencePlayer_1 = require("../../Common/LevelSequencePlayer"),
 	LguiUtil_1 = require("../../Util/LguiUtil"),
 	BattleChildView_1 = require("./BattleChildView/BattleChildView");
-var EAttributeId = Protocol_1.Aki.Protocol.KBs;
+var EAttributeId = Protocol_1.Aki.Protocol.Bks;
 const LOW_HP_PERCENT = 0.2;
 class RoleStateView extends BattleChildView_1.BattleChildView {
 	constructor() {

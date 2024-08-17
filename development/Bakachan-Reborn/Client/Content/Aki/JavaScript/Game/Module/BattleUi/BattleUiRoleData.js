@@ -7,7 +7,7 @@ const UE = require("ue"),
 	EventDefine_1 = require("../../Common/Event/EventDefine"),
 	EventSystem_1 = require("../../Common/Event/EventSystem"),
 	ConfigManager_1 = require("../../Manager/ConfigManager");
-var EAttributeId = Protocol_1.Aki.Protocol.KBs;
+var EAttributeId = Protocol_1.Aki.Protocol.Bks;
 const elementAttributeIds = [
 	void 0,
 	EAttributeId.Proto_ElementPower1,

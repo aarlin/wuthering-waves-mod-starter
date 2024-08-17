@@ -30,7 +30,7 @@ const Protocol_1 = require("../../../../../Core/Define/Net/Protocol"),
 	PhantomUtil_1 = require("../../../../Module/Phantom/PhantomUtil"),
 	CharacterAttributeTypes_1 = require("../../Common/Component/Abilities/CharacterAttributeTypes"),
 	CharacterBuffIds_1 = require("../../Common/Component/Abilities/CharacterBuffIds");
-var EAttributeId = Protocol_1.Aki.Protocol.KBs;
+var EAttributeId = Protocol_1.Aki.Protocol.Bks;
 const RegisterComponent_1 = require("../../../../../Core/Entity/RegisterComponent");
 let RoleElementComponent = (RoleElementComponent_1 = class extends (
 	EntityComponent_1.EntityComponent

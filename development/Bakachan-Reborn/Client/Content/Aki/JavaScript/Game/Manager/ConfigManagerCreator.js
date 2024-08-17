@@ -103,7 +103,6 @@ const AiConfig_1 = require("../AI/Common/AiConfig"),
 	PlotCameraTemplateConfig_1 = require("../Module/Plot/PlotCameraTemplateConfig"),
 	PlotMontageConfig_1 = require("../Module/Plot/PlotMontageConfig"),
 	PowerConfig_1 = require("../Module/Power/PowerConfig"),
-	ProtocolMonitorConfig_1 = require("../Module/ProtocolMonitor/ProtocolMonitorConfig"),
 	QuestConfig_1 = require("../Module/QuestNew/QuestConfig"),
 	ReportConfig_1 = require("../Module/Report/ReportConfig"),
 	RewardConfig_1 = require("../Module/Reward/RewardConfig"),
@@ -392,11 +391,6 @@ class ConfigManagerCreator {
 				new PlayerInfoConfig_1.PlayerInfoConfig()),
 			ConfigManager_1.ConfigManager.Add(
 				ConfigManager_1.ConfigManager.PlayerInfoConfig,
-			),
-			(ConfigManager_1.ConfigManager.ProtocolMonitorConfig =
-				new ProtocolMonitorConfig_1.ProtocolMonitorConfig()),
-			ConfigManager_1.ConfigManager.Add(
-				ConfigManager_1.ConfigManager.ProtocolMonitorConfig,
 			),
 			(ConfigManager_1.ConfigManager.SwimConfig =
 				new SwimConfig_1.SwimConfig()),
@@ -898,7 +892,6 @@ class ConfigManagerCreator {
 			(ConfigManager_1.ConfigManager.BuffItemConfig = void 0),
 			(ConfigManager_1.ConfigManager.WorldConfig = void 0),
 			(ConfigManager_1.ConfigManager.PlayerInfoConfig = void 0),
-			(ConfigManager_1.ConfigManager.ProtocolMonitorConfig = void 0),
 			(ConfigManager_1.ConfigManager.SwimConfig = void 0),
 			(ConfigManager_1.ConfigManager.RedDotConfig = void 0),
 			(ConfigManager_1.ConfigManager.MenuBaseConfig = void 0),

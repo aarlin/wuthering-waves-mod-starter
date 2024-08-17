@@ -131,7 +131,6 @@ const Log_1 = require("../../Core/Common/Log"),
 	PlotController_1 = require("../Module/Plot/PlotController"),
 	SequenceController_1 = require("../Module/Plot/Sequence/SequenceController"),
 	PowerController_1 = require("../Module/Power/PowerController"),
-	ProtocolMonitorController_1 = require("../Module/ProtocolMonitor/ProtocolMonitorController"),
 	QuestController_1 = require("../Module/QuestNew/Controller/QuestController"),
 	ReConnectController_1 = require("../Module/ReConnect/ReConnectController"),
 	ReportController_1 = require("../Module/Report/ReportController"),
@@ -432,9 +431,6 @@ class ControllerRegisterManager {
 			(ControllerHolder_1.ControllerHolder.MarqueeController =
 				MarqueeController_1.MarqueeController),
 			this.qp(MarqueeController_1.MarqueeController),
-			(ControllerHolder_1.ControllerHolder.ProtocolMonitorController =
-				ProtocolMonitorController_1.ProtocolMonitorController),
-			this.qp(ProtocolMonitorController_1.ProtocolMonitorController),
 			(ControllerHolder_1.ControllerHolder.TrackController =
 				TrackController_1.TrackController),
 			this.qp(TrackController_1.TrackController),

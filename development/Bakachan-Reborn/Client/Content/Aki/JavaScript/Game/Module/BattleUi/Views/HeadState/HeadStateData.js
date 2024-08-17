@@ -14,7 +14,7 @@ const UE = require("ue"),
 	ConfigManager_1 = require("../../../../Manager/ConfigManager"),
 	ModelManager_1 = require("../../../../Manager/ModelManager"),
 	ColorUtils_1 = require("../../../../Utils/ColorUtils");
-var EAttributeId = Protocol_1.Aki.Protocol.KBs;
+var EAttributeId = Protocol_1.Aki.Protocol.Bks;
 const RegisterComponent_1 = require("../../../../../Core/Entity/RegisterComponent"),
 	SOCKET_NAME = new UE.FName("MarkCase");
 class HeadStateData {

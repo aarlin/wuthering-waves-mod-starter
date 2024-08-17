@@ -13,7 +13,7 @@ const UE = require("ue"),
 	ModelManager_1 = require("../../../../../Manager/ModelManager"),
 	CombatDebugController_1 = require("../../../../../Utils/CombatDebugController"),
 	CharacterBuffIds_1 = require("../Abilities/CharacterBuffIds");
-var EAttributeId = Protocol_1.Aki.Protocol.KBs;
+var EAttributeId = Protocol_1.Aki.Protocol.Bks;
 const SkillMessageController_1 = require("../../../../../Module/CombatMessage/SkillMessageController"),
 	MONTAGE_BLEND_TIME = 0.2;
 class Skill {

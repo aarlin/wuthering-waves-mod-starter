@@ -3,16 +3,14 @@ Object.defineProperty(exports, "__esModule", { value: !0 }),
 	(exports.ActivityDailyAdventureData = exports.rewardStateResolver = void 0);
 const Log_1 = require("../../../../../Core/Common/Log"),
 	Protocol_1 = require("../../../../../Core/Define/Net/Protocol"),
-	EventDefine_1 = require("../../../../Common/Event/EventDefine"),
-	EventSystem_1 = require("../../../../Common/Event/EventSystem"),
 	ConfigManager_1 = require("../../../../Manager/ConfigManager"),
 	ModelManager_1 = require("../../../../Manager/ModelManager"),
 	ActivityData_1 = require("../../ActivityData"),
 	ActivityDailyAdventureDefine_1 = require("./ActivityDailyAdventureDefine");
 exports.rewardStateResolver = {
-	[Protocol_1.Aki.Protocol.IBs.Proto_DailyAdventureTaskRunning]: 1,
-	[Protocol_1.Aki.Protocol.IBs.Proto_DailyAdventureTaskFinish]: 0,
-	[Protocol_1.Aki.Protocol.IBs.Proto_DailyAdventureTaskTaken]: 2,
+	[Protocol_1.Aki.Protocol.cks.Proto_DailyAdventureTaskRunning]: 1,
+	[Protocol_1.Aki.Protocol.cks.Proto_DailyAdventureTaskFinish]: 0,
+	[Protocol_1.Aki.Protocol.cks.Proto_DailyAdventureTaskTaken]: 2,
 };
 class ActivityDailyAdventureData extends ActivityData_1.ActivityBaseData {
 	constructor() {
@@ -21,49 +19,29 @@ class ActivityDailyAdventureData extends ActivityData_1.ActivityBaseData {
 			(this.QNe = new Map()),
 			(this.XNe = new Map());
 	}
-	SetProgressPoint(e) {
-		this.ProgressPoint = e;
+	SetProgressPoint(t) {
+		this.ProgressPoint = t;
 		for (const e of this.QNe.values())
 			e.RefreshState(2 === e.RewardState, this.ProgressPoint);
 	}
-	PhraseEx(e) {
-		var t =
+	PhraseEx(t) {
+		var e =
 			ConfigManager_1.ConfigManager.ActivityDailyAdventureConfig.GetActivityDailyAdventureConfig(
 				this.Id,
 			);
-		if (t) {
-			this.$Ne(t.RewardList);
-			var r = e.S0s;
-			if (r) {
+		if (e) {
+			this.$Ne(e.RewardList);
+			var i = t.Ops;
+			if (i) {
 				(this.ProgressPoint =
 					ModelManager_1.ModelManager.InventoryModel.GetItemCountByConfigId(
 						ActivityDailyAdventureDefine_1.DAILY_ADVENTURE_PT_CONFIGID,
 					)),
-					this.XNe.clear();
-				for (const e of r.N0s) {
-					var a = new ActivityDailyAdventureDefine_1.DailyAdventureTaskData();
-					(a.TaskId = e.Ekn),
-						(a.CurrentProgress = e.k0s),
-						(a.TargetProgress = e.s3n),
-						(a.TaskState = exports.rewardStateResolver[e.n3n]),
-						this.XNe.set(e.Ekn, a),
-						Log_1.Log.CheckInfo() &&
-							Log_1.Log.Info(
-								"Activity",
-								38,
-								"[日常探险活动] 任务信息打印",
-								["TaskId", e.Ekn],
-								["State", a.TaskState],
-							);
+					this.CreateTaskInfo(i.rMs);
+				for (const o of this.QNe.values()) {
+					var r = i.oMs.includes(o.RewardId);
+					o.RefreshState(r, this.ProgressPoint);
 				}
-				for (const e of this.QNe.values()) {
-					var i = r.F0s.includes(e.RewardId);
-					e.RefreshState(i, this.ProgressPoint);
-				}
-				EventSystem_1.EventSystem.Emit(
-					EventDefine_1.EEventName.ActivityViewRefreshCurrent,
-					this.Id,
-				);
 			}
 		} else
 			Log_1.Log.CheckError() &&
@@ -72,52 +50,65 @@ class ActivityDailyAdventureData extends ActivityData_1.ActivityBaseData {
 					this.Id,
 				]);
 	}
-	$Ne(e) {
+	CreateTaskInfo(t) {
+		this.XNe.clear();
+		for (const i of t) {
+			var e = new ActivityDailyAdventureDefine_1.DailyAdventureTaskData();
+			(e.TaskId = i.J4n),
+				(e.CurrentProgress = i.iMs),
+				(e.TargetProgress = i.b6n),
+				(e.TaskState = exports.rewardStateResolver[i.w6n]),
+				this.XNe.set(i.J4n, e);
+		}
+	}
+	$Ne(t) {
 		this.QNe.clear();
-		for (const a of e) {
-			var t =
+		for (const r of t) {
+			var e =
 					ConfigManager_1.ConfigManager.ActivityDailyAdventureConfig.GetDailyAdventurePointConfig(
-						a,
+						r,
 					),
-				r =
-					(t ||
+				i =
+					(e ||
 						(Log_1.Log.CheckError() &&
 							Log_1.Log.Error(
 								"Activity",
 								38,
 								"[日常探险活动] 积分奖励数据不存在",
-								["Id", a],
+								["Id", r],
 							)),
 					new ActivityDailyAdventureDefine_1.DailyAdventureRewardData());
-			(r.RewardId = a), (r.Point = t.NeedPt), this.QNe.set(a, r);
+			(i.RewardId = r), (i.Point = e.NeedPt), this.QNe.set(r, i);
 		}
 	}
 	GetAllPointReward() {
 		return Array.from(this.QNe.values()).sort(
-			(e, t) => e.RewardId - t.RewardId,
+			(t, e) => t.RewardId - e.RewardId,
 		);
 	}
 	GetAllTaskInfo() {
-		return Array.from(this.XNe.values()).sort((e, t) =>
-			e.TaskState === t.TaskState
-				? e.TaskId - t.TaskId
-				: e.TaskState - t.TaskState,
+		return Array.from(this.XNe.values()).sort((t, e) =>
+			t.TaskState === e.TaskState
+				? t.TaskId - e.TaskId
+				: t.TaskState - e.TaskState,
 		);
 	}
-	SetPointReward(e, t) {
-		(e = this.QNe.get(e)) && e.RefreshState(t, this.ProgressPoint);
+	SetPointReward(t, e) {
+		t = this.QNe.get(t);
+		t && t.RefreshState(e, this.ProgressPoint);
 	}
-	SetTaskInfo(e, t, r) {
-		(e = this.XNe.get(e)) &&
-			(void 0 !== t && (e.TaskState = t), void 0 !== r) &&
-			(e.CurrentProgress = r);
+	SetTaskInfo(t, e, i) {
+		t = this.XNe.get(t);
+		t &&
+			(void 0 !== e && (t.TaskState = e), void 0 !== i) &&
+			(t.CurrentProgress = i);
 	}
 	GetDefaultMapMarkId() {
-		var e =
+		var t =
 			ConfigManager_1.ConfigManager.ActivityDailyAdventureConfig.GetActivityDailyAdventureConfig(
 				this.Id,
 			);
-		return e ? e.AreaDefaultMarkId : 0;
+		return t ? t.AreaDefaultMarkId : 0;
 	}
 	GetExDataRedPointShowState() {
 		return !this.YNe() && (this.IsTaskHasReward() || this.IsPointHasReward());
@@ -126,17 +117,18 @@ class ActivityDailyAdventureData extends ActivityData_1.ActivityBaseData {
 		return !1;
 	}
 	IsTaskHasReward() {
-		for (const e of this.XNe.values()) if (0 === e.TaskState) return !0;
+		for (const t of this.XNe.values()) if (0 === t.TaskState) return !0;
 		return !1;
 	}
 	IsPointHasReward() {
-		for (const e of this.QNe.values()) if (0 === e.RewardState) return !0;
+		for (const t of this.QNe.values()) if (0 === t.RewardState) return !0;
 		return !1;
 	}
 	YNe() {
-		let e = !0;
-		for (const t of this.QNe.values()) 2 !== t.RewardState && (e = !1);
-		return e;
+		let t = !0;
+		for (const e of this.QNe.values()) 2 !== e.RewardState && (t = !1);
+		return t;
 	}
 }
 exports.ActivityDailyAdventureData = ActivityDailyAdventureData;
+//# sourceMappingURL=ActivityDailyAdventureData.js.map

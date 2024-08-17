@@ -21,7 +21,7 @@ Object.defineProperty(exports, "__esModule", { value: !0 }),
 	(exports.RoleEnergyComponent = void 0);
 const Protocol_1 = require("../../../../../Core/Define/Net/Protocol"),
 	EntityComponent_1 = require("../../../../../Core/Entity/EntityComponent");
-var EAttributeId = Protocol_1.Aki.Protocol.KBs;
+var EAttributeId = Protocol_1.Aki.Protocol.Bks;
 const RegisterComponent_1 = require("../../../../../Core/Entity/RegisterComponent"),
 	energyAttrIds = [EAttributeId.Proto_Energy, EAttributeId.Proto_EnergyMax],
 	ModManager_1 = require("../../../../Manager/ModManager");

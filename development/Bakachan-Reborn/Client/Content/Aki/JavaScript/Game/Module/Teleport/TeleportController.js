@@ -264,15 +264,16 @@ class TeleportController extends ControllerBase_1.ControllerBase {
 					]),
 				!1
 			);
-		Log_1.Log.CheckInfo() &&
-			Log_1.Log.Info(
-				"Teleport",
-				40,
-				"伪传送:开始",
-				["原因", e.TeleportReason],
-				["Reason", o],
-			),
-			(r.IsTeleport = !0);
+    // MOD: Teleport Logs
+		// Log_1.Log.CheckInfo() &&
+		// 	Log_1.Log.Info(
+		// 		"Teleport",
+		// 		40,
+		// 		"伪传送:开始",
+		// 		["原因", e.TeleportReason],
+		// 		["Reason", o],
+		// 	),
+		// 	(r.IsTeleport = !0);
 		var t = new AsyncTask_1.AsyncTask(
 			"FakeTeleportToPositionImpl",
 			async () => (

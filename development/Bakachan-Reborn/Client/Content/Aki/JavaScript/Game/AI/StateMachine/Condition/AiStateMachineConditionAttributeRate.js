@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: !0 }),
 	(exports.AiStateMachineConditionAttributeRate = void 0);
 const Protocol_1 = require("../../../../Core/Define/Net/Protocol"),
 	AiStateMachineCondition_1 = require("./AiStateMachineCondition");
-var EAttributeId = Protocol_1.Aki.Protocol.KBs;
+var EAttributeId = Protocol_1.Aki.Protocol.Bks;
 const ATTRIBUTE_RATE_COE = 1e-4;
 class AiStateMachineConditionAttributeRate extends AiStateMachineCondition_1.AiStateMachineCondition {
 	constructor() {

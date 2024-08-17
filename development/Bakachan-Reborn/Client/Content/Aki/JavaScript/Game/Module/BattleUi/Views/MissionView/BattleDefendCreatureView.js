@@ -6,7 +6,7 @@ const UE = require("ue"),
 	Protocol_1 = require("../../../../../Core/Define/Net/Protocol"),
 	LguiUtil_1 = require("../../../Util/LguiUtil"),
 	BattleEntityChildView_1 = require("../BattleChildView/BattleEntityChildView");
-var EAttributeId = Protocol_1.Aki.Protocol.KBs;
+var EAttributeId = Protocol_1.Aki.Protocol.Bks;
 class BattleDefendCreatureView extends BattleEntityChildView_1.BattleEntityChildView {
 	constructor() {
 		super(...arguments),

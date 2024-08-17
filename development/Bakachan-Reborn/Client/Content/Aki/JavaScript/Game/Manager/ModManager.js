@@ -68,6 +68,27 @@ class ModManager {
 		MarkZ: 0,
 		Uid: "Re:Re: v1.1.1 Original by KunMod & BakaChan",
 	};
+
+  static buttonMappings = [
+		{ name: "ShowMenu", key: "Home", toggle: false },
+		{ name: "GodMode", key: "F5", toggle: true },
+		{ name: "HitMultiplier", key: "F6", toggle: true },
+		{ name: "AutoPickTreasure", key: "F7", toggle: true },
+		{ name: "AutoAbsorb", key: "F8", toggle: true },
+		{ name: "killAura", key: "F9", toggle: true },
+		{ name: "PerceptionRange", key: "F10", toggle: true },
+		{ name: "NoCD", key: "F11", toggle: true },
+		{ name: "PlayerSpeed", key: "F12", toggle: true },
+		{ name: "CustomTp", key: "Insert", toggle: true },
+		{ name: "infAura", key: "End", toggle: true },
+		{ name: "ShopMultiplier", key: "Semicolon", toggle: false },
+		{ name: "UIDChanger", key: "Apostrophe", toggle: false },
+		{ name: "AutoLoot", key: "Comma", toggle: true },
+		{ name: "AutoDestroy", key: "Period", toggle: true },
+		{ name: "HideDamage", key: "Slash", toggle: true },
+		{ name: "AlwaysCrit", key: "Backslash", toggle: true },
+	];
+
 	static ModStart() {
 		ModDebuger_1.ModDebuger.TestMethod(),
 			ModLanguage_1.ModLanguage.GetCurrLang(),
