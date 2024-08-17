@@ -70,3 +70,9 @@
     i. New shortcut
 
     ii. [wuwa_modloader](https://github.com/Sehyn/wuwa_modloader)
+
+## Example Mod
+
+Under `WutheringWaves-MenuWithText`, is an example mod that displays the basics of showing a menu
+
+![](./assets/MenuWithText.png)
