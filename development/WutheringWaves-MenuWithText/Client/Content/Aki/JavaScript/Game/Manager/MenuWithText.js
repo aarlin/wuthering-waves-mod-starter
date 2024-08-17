@@ -16,7 +16,7 @@ class MenuWithText extends UiControllerBase_1.UiControllerBase {
 	}
 
 	static HandleKeyInputs() {
-		if (InputController_1.InputController.IsCustomKeyUp("g")) {
+		if (InputController_1.InputController.IsMyKeyUp("g")) {
 			this.showConfirmBox("ConfirmBoxTitle", "ConfirmBoxTextContent", 50);
 		}
 	}
