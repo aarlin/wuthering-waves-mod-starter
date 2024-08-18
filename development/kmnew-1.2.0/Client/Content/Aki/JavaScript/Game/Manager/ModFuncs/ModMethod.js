@@ -17,7 +17,7 @@ const puerts_1 = require("puerts"),
   GlobalData_1 = require("../../GlobalData"),
   CombatMessage_1 = require("../../Module/CombatMessage/CombatMessage"),
   LevelGamePlayController_1 = require("../../LevelGamePlay/LevelGamePlayController"),
-  ControllerHolder_1 = require("../../Manager/ControllerHolder"),
+  ControllerHolder_1 = require("../ControllerHolder"),
   WeatherController_1 = require("../../Module/Weather/WeatherController"),
   TimeOfDayController_1 = require("../../Module/TimeOfDay/TimeOfDayController"),
   ModDebuger_1 = require("./ModDebuger");
@@ -25,17 +25,18 @@ const puerts_1 = require("puerts"),
 class ModMethod {
   //怪物淹死
   static MonsterDrownRequest(entity) {
-    //v1.10
+    // v1.1.0
     // update here
-    // CombatMessage_1.CombatNet.Call(
-    //   24697 /*NetDefine_1.ERequestMessageId.MonsterDrownRequest*/,
-    //   entity,
-    //   Protocol_1.Aki.Protocol.jNn.create()
-    // );
+    CombatMessage_1.CombatNet.Call(
+      // check MonsterBehaviorComponent line 52 for combat net call number
+      18989 /*NetDefine_1.ERequestMessageId.MonsterDrownRequest*/,
+      entity,
+      Protocol_1.Aki.Protocol.jNn.create()
+    );
   }
 
   static ThrowDamageChangeRequest(Entity, count, DamageId) {
-    //1.1work
+    // v1.1.0 work
     for (let i = 0; i < count; i++) {
       LevelGamePlayController_1.LevelGamePlayController.ThrowDamageChangeRequest(
         Entity.Id,
@@ -45,7 +46,7 @@ class ModMethod {
   }
 
   static AnimalDieRequest(entity) {
-    //v1.1work
+    // v1.1.0 work
     // update here
     // ControllerHolder_1.ControllerHolder.CreatureController.AnimalDieRequest(
     //   entity.GetComponent(0).GetCreatureDataId(),
