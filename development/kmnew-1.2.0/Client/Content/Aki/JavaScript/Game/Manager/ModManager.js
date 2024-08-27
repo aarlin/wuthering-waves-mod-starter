@@ -41,7 +41,7 @@ class ModManager {
     AntiDither: false,
     NoCD: false,
     InfiniteStamina: false,
-    killAura: false,
+    hitAll: false,
     killAuraState: 0, //0 Only Hatred  1 Infinity
     PerceptionRange: false,
     MarkTp: false,
@@ -60,7 +60,7 @@ class ModManager {
     DebugEntity: false, //(if use entity func need enable)
     AutoDestroy: false,
     killAuranew: false,
-    killAuraRadius: 300,
+    killAuraRadius: 100,
     KillAnimal: false,
     AutoAbsorbnew: false,
     AutoChest: false,
@@ -71,7 +71,7 @@ class ModManager {
     PlotSkip: false,
     MobVacuum: false,
     VacuumCollect: false,
-    VacuumRadius: 300,
+    VacuumRadius: 200,
     AttributeModifier: false,
     Uid: "100000000",
     Language: "English",
@@ -146,6 +146,7 @@ class ModManager {
         Config[Diff[i]] = ModManager.Settings[Diff[i]];
       }
     }
+    Config.VacuumRadius !== this.Settings.VacuumRadius ? (Config.VacuumRadius = this.Settings.VacuumRadius) : {}
     this.Settings = Config;
     if (!ModLanguage_1.ModLanguage.Langs.includes(this.Settings.Language)) {
       this.Settings.Language = "English";
@@ -158,7 +159,7 @@ class ModManager {
     this.AddToggle("HitMultiplier", "F6");
     this.AddToggle("AutoPickTreasure", "F7");
     this.AddToggle("AutoAbsorbnew", "F8");
-    this.AddToggle("killAura", "F9");
+    this.AddToggle("hitAll", "F9");
     this.AddToggle("PerceptionRange", "F10");
     this.AddToggle("NoCD", "F11");
     this.AddToggle("PlayerSpeed", "F12");
@@ -175,7 +176,7 @@ class ModManager {
 
     this.listenMod("AutoPickTreasure", "F7", "AutoPickTreasure");
     this.listenMod("AutoAbsorbnew", "F8", "AutoAbsorbnew");
-    this.listenMod("killAura", "F9", "killAura");
+    this.listenMod("hitAll", "F9", "hitAll");
     this.listenMod("PerceptionRange", "F10", "PerceptionRange");
     this.listenMod("NoCD", "F11", "NoCD");
 

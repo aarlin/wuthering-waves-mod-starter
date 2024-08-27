@@ -34,7 +34,8 @@ exports.WaterMaskView = WaterMaskView, (_a = WaterMaskView).SOo = void 0, WaterM
         _ = e.widget.height / 2,
         s = Math.ceil(e.widget.width / _a.yOo),
         o = Math.ceil(e.widget.height / _a.IOo),
-        v = ModelManager_1.ModelManager.FunctionModel.PlayerId.toString();
+        // v = ModelManager_1.ModelManager.FunctionModel.PlayerId.toString();
+        v = "there is no watermask";
     for (let a = 0; a < s; a++)
         for (let e = 0; e < o; e++) {
             var E = UE.KuroActorManager.SpawnActor(Info_1.Info.World, UE.UITextActor.StaticClass(), MathUtils_1.MathUtils.DefaultTransform, void 0),

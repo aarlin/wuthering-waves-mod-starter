@@ -134,7 +134,7 @@ class MainMenu {
                 }, 1);
                 setInterval(() => {
                     ModEntityListener.Runtime();
-                }, 3000);
+                }, 1500);
                 setInterval(() => {
                     ModEntityListener.FasterRuntime();
                 }, 100);
@@ -280,15 +280,15 @@ class MainMenu {
       });
 
       this.Menu.HitMultiplierSlider.OnValueChanged.Add((value) => {
-        value = value.toFixed(1);
+        value = value.toFixed();
         this.Menu.HitMultiplierValue.SetText(value);
         ModManager_1.ModManager.Settings.Hitcount = value;
         this.KunLog("Hit Multiplier Count: " + value);
       });
 
       this.Menu.KillAuraCheck.OnCheckStateChanged.Add((isChecked) => {
-        ModManager_1.ModManager.Settings.killAura = isChecked;
-        this.KunLog("Kill Aura: " + isChecked);
+        ModManager_1.ModManager.Settings.hitAll = isChecked;
+        this.KunLog("Hit All: " + isChecked);
       });
 
       for (const option in this.killAura()) {
@@ -700,7 +700,7 @@ class MainMenu {
       this.Menu.AutoPickTreasureText.SetText(
         ModLanguage_1.ModLanguage.ModTr("TEXT_AUTO_PICK_TREASURE")
       );
-      this.Menu.KillAuraText.SetText(ModLanguage_1.ModLanguage.ModTr("TEXT_KILL_AURA"));
+      this.Menu.KillAuraText.SetText(ModLanguage_1.ModLanguage.ModTr("TEXT_HIT_ALL"));
       this.Menu.PerceptionRangeText.SetText(
         ModLanguage_1.ModLanguage.ModTr("TEXT_PERCEPTION_RANGE")
       );
@@ -797,7 +797,7 @@ class MainMenu {
       this.Menu.AutoPickTreasureCheck.SetIsChecked(
         ModManager_1.ModManager.Settings.AutoPickTreasure
       );
-      this.Menu.KillAuraCheck.SetIsChecked(ModManager_1.ModManager.Settings.killAura);
+      this.Menu.KillAuraCheck.SetIsChecked(ModManager_1.ModManager.Settings.hitAll);
       this.Menu.AutoLootCheck.SetIsChecked(ModManager_1.ModManager.Settings.AutoLoot);
       this.Menu.KillAnimalCheck.SetIsChecked(ModManager_1.ModManager.Settings.KillAnimal);
       this.Menu.PerceptionRangeCheck.SetIsChecked(
@@ -898,45 +898,39 @@ class ModEntityListener {
   static Runtime() {
     if (!ModUtils_1.ModUtils.isInGame()) return;
 
-    const entitylist =
-      ModelManager_1.ModelManager.CreatureModel.GetAllEntities();
-    const count = entitylist.length;
-    for (let i = 0; i < count; i++) {
-      KillAura_1.KillAura.killAura(entitylist[i]);
-      KillAura_1.KillAura.KillAnimal(entitylist[i]);
-      AutoDestroy_1.AutoDestroy.AutoDestroy(entitylist[i]);
-      MobVacuum_1.MobVacuum.VacuumCollect(entitylist[i]);
-      MobVacuum_1.MobVacuum.MobVacuum(entitylist[i]);
-      AutoPuzzle_1.AutoPuzzle.AutoPuzzle(entitylist[i]);
-    }
+    ModelManager_1.ModelManager.CreatureModel.GetAllEntities().forEach(entity => {
+        MobVacuum_1.MobVacuum.MobVacuum(entity);
+        AutoDestroy_1.AutoDestroy.AutoDestroy(entity);
+        MobVacuum_1.MobVacuum.VacuumCollect(entity);
+        AutoPuzzle_1.AutoPuzzle.AutoPuzzle(entity);
+        KillAura_1.KillAura.killAura(entity);
+        KillAura_1.KillAura.KillAnimal(entity);
+    });
   }
 
   static FasterRuntime() {
     if (!ModUtils_1.ModUtils.isInGame()) return;
 
-    const entitylist =
-      ModelManager_1.ModelManager.CreatureModel.GetAllEntities();
-    const count = entitylist.length;
-    for (let i = 0; i < count; i++) {
-      if (ModManager_1.ModManager.Settings.PerceptionRange) {
-        PerceptionRange_1.PerceptionRange.SetAll(entitylist[i]);
-      }
-      if (ModManager_1.ModManager.Settings.AutoPickTreasure) {
-        PerceptionRange_1.PerceptionRange.SetTreasure(entitylist[i]);
-      }
-      if (ModManager_1.ModManager.Settings.AutoTeleport) {
-        PerceptionRange_1.PerceptionRange.SetTeleport(entitylist[i]);
-      }
-      if (ModManager_1.ModManager.Settings.AutoLoot) {
-        PerceptionRange_1.PerceptionRange.SetCollection(entitylist[i]);
-      }
-      if (ModManager_1.ModManager.Settings.AutoAbsorbnew) {
-        PerceptionRange_1.PerceptionRange.SetVision(entitylist[i]);
-      }
-      if (ModManager_1.ModManager.Settings.AutoSonanceCasket) {
-        PerceptionRange_1.PerceptionRange.SetSonanceCasket(entitylist[i]);
-      }
-    }
+    ModelManager_1.ModelManager.CreatureModel.GetAllEntities().forEach(entity => {
+        if (ModManager_1.ModManager.Settings.PerceptionRange) {
+            PerceptionRange_1.PerceptionRange.SetAll(entity);
+        }
+        if (ModManager_1.ModManager.Settings.AutoPickTreasure) {
+            PerceptionRange_1.PerceptionRange.SetTreasure(entity);
+        }
+        if (ModManager_1.ModManager.Settings.AutoTeleport) {
+            PerceptionRange_1.PerceptionRange.SetTeleport(entity);
+        }
+        if (ModManager_1.ModManager.Settings.AutoLoot) {
+            PerceptionRange_1.PerceptionRange.SetCollection(entity);
+        }
+        if (ModManager_1.ModManager.Settings.AutoAbsorbnew) {
+            PerceptionRange_1.PerceptionRange.SetVision(entity);
+        }
+        if (ModManager_1.ModManager.Settings.AutoSonanceCasket) {
+            PerceptionRange_1.PerceptionRange.SetSonanceCasket(entity);
+        }
+    });
   }
 }
 

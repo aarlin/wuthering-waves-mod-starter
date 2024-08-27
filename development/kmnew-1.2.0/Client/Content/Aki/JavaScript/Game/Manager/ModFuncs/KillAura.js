@@ -14,6 +14,7 @@ const AnimalList = [
   "Animal003", //蓝冠鸽
   "Animal004", //灰冠鸥
   "Animal012", //青杂兔
+  "Animal032" // blobfly :(
 ];
 const BigAnimalList = [
   "Animal013", //岩角羊
@@ -40,7 +41,7 @@ class KillAura extends EntityManager_1.EntityManager {
     if (!ModManager_1.ModManager.Settings.killAuranew) return;
 
     if (this.isMonster(entity) && this.isIndistance(entity)) {
-      ModMethod_1.ModMethod.MonsterDrownRequest(entity.Entity);
+      ModMethod_1.ModMethod.MonsterKillRequest(entity.Entity);
     }
   }
   static KillAnimal(entity) {

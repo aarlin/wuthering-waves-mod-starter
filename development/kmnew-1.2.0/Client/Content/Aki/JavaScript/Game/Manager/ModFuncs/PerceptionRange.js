@@ -8,31 +8,31 @@ let EntityManager_1 = require("./EntityManager"),
 class PerceptionRange extends EntityManager_1.EntityManager {
   static SetCollection(entity) {
     if (EntityFilter_1.EntityFilter.isneedLoot(this.GetBlueprintType2(entity))) {
-      PerceptionRange.SetInteractRange(entity, Range * 100);
+      PerceptionRange.SetInteractRange(entity, Range * 1e3);
     }
   }
 
   static SetTeleport(entity) {
     if (this.isTeleport(entity)) {
-      PerceptionRange.SetInteractRange(entity, Range * 100);
+      PerceptionRange.SetInteractRange(entity, Range * 1e3);
     }
   }
 
   static SetTreasure(entity) {
     if (EntityFilter_1.EntityFilter.isneedTreasure(this.GetBlueprintType2(entity))) {
-      PerceptionRange.SetInteractRange(entity, Range * 100);
+      PerceptionRange.SetInteractRange(entity, Range * 1e3);
     }
   }
 
   static SetVision(entity) {
     if (this.isVision(entity)) {
-      PerceptionRange.SetInteractRange(entity, Range * 100);
+      PerceptionRange.SetInteractRange(entity, Range * 1e3);
     }
   }
 
   static SetSonanceCasket(entity) {
     if (this.isSonanceCasket(entity)) {
-      PerceptionRange.SetInteractRange(entity, Range * 100);
+      PerceptionRange.SetInteractRange(entity, Range * 1e3);
     }
   }
 
@@ -48,11 +48,10 @@ class PerceptionRange extends EntityManager_1.EntityManager {
         this.GetBlueprintType2(entity)
       )
     )
-      PerceptionRange.SetInteractRange(entity, Range * 100);
+      PerceptionRange.SetInteractRange(entity, Range * 1e3);
   }
 
   static SetInteractRange(entity, range) {
-    // update here
     let PawnPerceptionComponent = entity.Entity.GetComponent(106);
     try {
       PawnPerceptionComponent.SetInteractRange(range, 0);
