@@ -15,7 +15,7 @@ const puerts_1 = require("puerts"),
   ConfirmBoxDefine_1 = require("../Module/ConfirmBox/ConfirmBoxDefine"),
   ScrollingTipsController_1 = require("../Module/ScrollingTips/ScrollingTipsController"),
   MapController_1 = require("../Module/Map/Controller/MapController"),
-  ModelManager_1 = require("./ModelManager"),
+  ModelManager_1 = require("../Manager/ModelManager"),
   UidView_1 = require("../Module/UidShow/UidView"),
   UiManager_1 = require("../../Ui/UiManager"),
   ModCustomTp_1 = require("./ModFuncs/ModCustomTp"),
@@ -27,7 +27,7 @@ const puerts_1 = require("puerts"),
   MobVacuum_1 = require("./ModFuncs/MobVacuum"),
   keys_State = {},
   ConfigFileName = "KunModConfig.json";
-
+  
 class ModManager {
   constructor() {
     this.key_State = false;
